@@ -28,6 +28,13 @@ class SiteTranslationService
 
     public function get(string $key, ?string $default = null): string
     {
+        if (Schema::hasTable('content_translations')) {
+            $contentValue = app(ContentService::class)->get($key, null);
+            if ($contentValue !== $key) {
+                return $contentValue;
+            }
+        }
+
         $locale = app()->getLocale();
         $map = $this->mapForLocale($locale);
 

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Language;
+use App\Services\ContentService;
 use App\Services\SiteTranslationService;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
@@ -15,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->singleton(ContentService::class, fn () => new ContentService);
         $this->app->singleton(SiteTranslationService::class, fn () => new SiteTranslationService);
     }
 
