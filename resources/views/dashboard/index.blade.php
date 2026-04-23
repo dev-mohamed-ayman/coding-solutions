@@ -1,218 +1,182 @@
 @extends('dashboard.layouts.app')
 
-@section('title', 'Dashboard Overview')
+@section('title', 'Dashboard')
 
 @section('content')
-    <!-- Page Header -->
-    <div class="mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+    <div class="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
         <div>
-            <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Welcome back, Admin</h1>
-            <p class="text-sm text-slate-500 mt-1">Here is what's happening with your projects today.</p>
+            <h1 class="text-2xl font-semibold tracking-tight text-zinc-900">Overview</h1>
+            <p class="mt-1 text-sm text-zinc-500">Summary of activity and key metrics.</p>
         </div>
-        <div class="flex gap-3">
-            <button class="px-4 py-2 bg-white border border-slate-200 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors shadow-sm">
-                Download Report
+        <div class="flex flex-wrap gap-2">
+            <button type="button" class="rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-700 shadow-sm transition hover:bg-zinc-50">
+                Export
             </button>
-            <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 transition-colors shadow-sm shadow-indigo-200 flex items-center gap-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                New Project
+            <button type="button" class="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-zinc-900/10 transition hover:bg-zinc-800">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                New project
             </button>
         </div>
     </div>
 
-    <!-- Stats Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <!-- Stat Card 1 -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm relative overflow-hidden group">
-            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                <svg class="w-16 h-16 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-            </div>
-            <div class="flex items-center justify-between mb-4 relative z-10">
-                <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                </div>
-                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center gap-1">
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                    +12%
+    <div class="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-sm">
+            <div class="flex items-start justify-between">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
                 </span>
+                <span class="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700">+12%</span>
             </div>
-            <div class="relative z-10">
-                <h3 class="text-3xl font-bold text-slate-900 mb-1">8,492</h3>
-                <p class="text-sm text-slate-500 font-medium">Total Users</p>
-            </div>
+            <p class="mt-4 text-2xl font-semibold tabular-nums text-zinc-900">8,492</p>
+            <p class="text-sm text-zinc-500">Total users</p>
         </div>
 
-        <!-- Stat Card 2 -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm relative overflow-hidden group">
-            <div class="flex items-center justify-between mb-4 relative z-10">
-                <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                </div>
-                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center gap-1">
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                    +8.5%
+        <div class="rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-sm">
+            <div class="flex items-start justify-between">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50 text-sky-600">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
                 </span>
+                <span class="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700">+8.5%</span>
             </div>
-            <div class="relative z-10">
-                <h3 class="text-3xl font-bold text-slate-900 mb-1">$45.2K</h3>
-                <p class="text-sm text-slate-500 font-medium">Total Revenue</p>
-            </div>
+            <p class="mt-4 text-2xl font-semibold tabular-nums text-zinc-900">$45.2K</p>
+            <p class="text-sm text-zinc-500">Revenue</p>
         </div>
 
-        <!-- Stat Card 3 -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm relative overflow-hidden group">
-            <div class="flex items-center justify-between mb-4 relative z-10">
-                <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                </div>
-                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-rose-50 text-rose-600 border border-rose-100 flex items-center gap-1">
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0v-8m0 8l-8-8-4 4-6-6"></path></svg>
-                    -2.4%
+        <div class="rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-sm">
+            <div class="flex items-start justify-between">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
                 </span>
+                <span class="rounded-full bg-rose-50 px-2 py-0.5 text-xs font-medium text-rose-700">−2.4%</span>
             </div>
-            <div class="relative z-10">
-                <h3 class="text-3xl font-bold text-slate-900 mb-1">1,240</h3>
-                <p class="text-sm text-slate-500 font-medium">Active Projects</p>
-            </div>
+            <p class="mt-4 text-2xl font-semibold tabular-nums text-zinc-900">1,240</p>
+            <p class="text-sm text-zinc-500">Active projects</p>
         </div>
 
-        <!-- Stat Card 4 -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm relative overflow-hidden group">
-            <div class="flex items-center justify-between mb-4 relative z-10">
-                <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                </div>
-                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center gap-1">
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                    +24%
+        <div class="rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-sm">
+            <div class="flex items-start justify-between">
+                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-50 text-violet-600">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 </span>
+                <span class="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700">+24%</span>
             </div>
-            <div class="relative z-10">
-                <h3 class="text-3xl font-bold text-slate-900 mb-1">85%</h3>
-                <p class="text-sm text-slate-500 font-medium">Task Completion</p>
-            </div>
+            <p class="mt-4 text-2xl font-semibold tabular-nums text-zinc-900">85%</p>
+            <p class="text-sm text-zinc-500">Tasks done</p>
         </div>
     </div>
 
-    <!-- Main Content Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        <!-- Recent Orders/Activity Table -->
-        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm lg:col-span-2 overflow-hidden">
-            <div class="p-6 border-b border-slate-100 flex items-center justify-between">
-                <h2 class="text-lg font-bold text-slate-900">Recent Activity</h2>
-                <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-700">View All</a>
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div class="overflow-hidden rounded-2xl border border-zinc-200/80 bg-white shadow-sm lg:col-span-2">
+            <div class="flex items-center justify-between border-b border-zinc-100 px-5 py-4">
+                <h2 class="text-sm font-semibold text-zinc-900">Recent activity</h2>
+                <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">View all</a>
             </div>
             <div class="overflow-x-auto">
-                <table class="w-full text-left text-sm whitespace-nowrap">
-                    <thead class="bg-slate-50/50 text-slate-500">
-                        <tr>
-                            <th class="px-6 py-4 font-medium">Project</th>
-                            <th class="px-6 py-4 font-medium">Client</th>
-                            <th class="px-6 py-4 font-medium">Status</th>
-                            <th class="px-6 py-4 font-medium">Date</th>
+                <table class="w-full text-left text-sm">
+                    <thead>
+                        <tr class="border-b border-zinc-100 bg-zinc-50/80 text-xs font-medium uppercase tracking-wide text-zinc-500">
+                            <th class="whitespace-nowrap px-5 py-3">Project</th>
+                            <th class="whitespace-nowrap px-5 py-3">Client</th>
+                            <th class="whitespace-nowrap px-5 py-3">Status</th>
+                            <th class="whitespace-nowrap px-5 py-3">Date</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-100 text-slate-700">
-                        <tr class="hover:bg-slate-50/50 transition-colors">
-                            <td class="px-6 py-4">
+                    <tbody class="divide-y divide-zinc-100 text-zinc-700">
+                        <tr class="transition-colors hover:bg-zinc-50/80">
+                            <td class="whitespace-nowrap px-5 py-3.5">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-xs">WD</div>
-                                    <span class="font-medium text-slate-900">Web Dashboard</span>
+                                    <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-100 text-xs font-semibold text-indigo-700">WD</span>
+                                    <span class="font-medium text-zinc-900">Web Dashboard</span>
                                 </div>
                             </td>
-                            <td class="px-6 py-4">Acme Corp</td>
-                            <td class="px-6 py-4">
-                                <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700">Completed</span>
+                            <td class="whitespace-nowrap px-5 py-3.5">Acme Corp</td>
+                            <td class="whitespace-nowrap px-5 py-3.5">
+                                <span class="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-800">Done</span>
                             </td>
-                            <td class="px-6 py-4 text-slate-500">Oct 24, 2023</td>
+                            <td class="whitespace-nowrap px-5 py-3.5 text-zinc-500">Oct 24, 2023</td>
                         </tr>
-                        <tr class="hover:bg-slate-50/50 transition-colors">
-                            <td class="px-6 py-4">
+                        <tr class="transition-colors hover:bg-zinc-50/80">
+                            <td class="whitespace-nowrap px-5 py-3.5">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs">MA</div>
-                                    <span class="font-medium text-slate-900">Mobile App UI</span>
+                                    <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-100 text-xs font-semibold text-sky-700">MA</span>
+                                    <span class="font-medium text-zinc-900">Mobile App UI</span>
                                 </div>
                             </td>
-                            <td class="px-6 py-4">Globex Inc</td>
-                            <td class="px-6 py-4">
-                                <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-700">In Progress</span>
+                            <td class="whitespace-nowrap px-5 py-3.5">Globex Inc</td>
+                            <td class="whitespace-nowrap px-5 py-3.5">
+                                <span class="rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-medium text-amber-800">Active</span>
                             </td>
-                            <td class="px-6 py-4 text-slate-500">Oct 22, 2023</td>
+                            <td class="whitespace-nowrap px-5 py-3.5 text-zinc-500">Oct 22, 2023</td>
                         </tr>
-                        <tr class="hover:bg-slate-50/50 transition-colors">
-                            <td class="px-6 py-4">
+                        <tr class="transition-colors hover:bg-zinc-50/80">
+                            <td class="whitespace-nowrap px-5 py-3.5">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-xs">LP</div>
-                                    <span class="font-medium text-slate-900">Landing Page</span>
+                                    <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-violet-100 text-xs font-semibold text-violet-700">LP</span>
+                                    <span class="font-medium text-zinc-900">Landing Page</span>
                                 </div>
                             </td>
-                            <td class="px-6 py-4">Stark Ind.</td>
-                            <td class="px-6 py-4">
-                                <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-700">Pending</span>
+                            <td class="whitespace-nowrap px-5 py-3.5">Stark Ind.</td>
+                            <td class="whitespace-nowrap px-5 py-3.5">
+                                <span class="rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs font-medium text-zinc-700">Pending</span>
                             </td>
-                            <td class="px-6 py-4 text-slate-500">Oct 20, 2023</td>
+                            <td class="whitespace-nowrap px-5 py-3.5 text-zinc-500">Oct 20, 2023</td>
                         </tr>
-                        <tr class="hover:bg-slate-50/50 transition-colors border-b-0">
-                            <td class="px-6 py-4">
+                        <tr class="transition-colors hover:bg-zinc-50/80">
+                            <td class="whitespace-nowrap px-5 py-3.5">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-xs">SA</div>
-                                    <span class="font-medium text-slate-900">SaaS Platform</span>
+                                    <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-rose-100 text-xs font-semibold text-rose-700">SA</span>
+                                    <span class="font-medium text-zinc-900">SaaS Platform</span>
                                 </div>
                             </td>
-                            <td class="px-6 py-4">Initech</td>
-                            <td class="px-6 py-4">
-                                <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700">Completed</span>
+                            <td class="whitespace-nowrap px-5 py-3.5">Initech</td>
+                            <td class="whitespace-nowrap px-5 py-3.5">
+                                <span class="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-800">Done</span>
                             </td>
-                            <td class="px-6 py-4 text-slate-500">Oct 18, 2023</td>
+                            <td class="whitespace-nowrap px-5 py-3.5 text-zinc-500">Oct 18, 2023</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- Sidebar Widget -->
-        <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
-            <h2 class="text-lg font-bold text-slate-900 mb-6">Top Performers</h2>
-            <div class="space-y-6">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <img src="https://ui-avatars.com/api/?name=Sarah+Connor&background=random" class="w-10 h-10 rounded-full" alt="User">
-                        <div>
-                            <p class="text-sm font-bold text-slate-900">Sarah Connor</p>
-                            <p class="text-xs text-slate-500">Lead Designer</p>
+        <div class="rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-sm">
+            <h2 class="text-sm font-semibold text-zinc-900">Team</h2>
+            <p class="mt-0.5 text-xs text-zinc-500">Top completion rates</p>
+            <ul class="mt-5 space-y-4">
+                <li class="flex items-center justify-between gap-3">
+                    <div class="flex min-w-0 items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=Sarah+Connor&background=e4e4e7&color=18181b" alt="" class="h-10 w-10 rounded-full">
+                        <div class="min-w-0">
+                            <p class="truncate text-sm font-medium text-zinc-900">Sarah Connor</p>
+                            <p class="truncate text-xs text-zinc-500">Lead designer</p>
                         </div>
                     </div>
-                    <span class="text-sm font-semibold text-slate-900">98%</span>
-                </div>
-                
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" class="w-10 h-10 rounded-full" alt="User">
-                        <div>
-                            <p class="text-sm font-bold text-slate-900">John Doe</p>
-                            <p class="text-xs text-slate-500">Frontend Dev</p>
+                    <span class="shrink-0 text-sm font-semibold tabular-nums text-zinc-900">98%</span>
+                </li>
+                <li class="flex items-center justify-between gap-3">
+                    <div class="flex min-w-0 items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=e4e4e7&color=18181b" alt="" class="h-10 w-10 rounded-full">
+                        <div class="min-w-0">
+                            <p class="truncate text-sm font-medium text-zinc-900">John Doe</p>
+                            <p class="truncate text-xs text-zinc-500">Frontend</p>
                         </div>
                     </div>
-                    <span class="text-sm font-semibold text-slate-900">92%</span>
-                </div>
-
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <img src="https://ui-avatars.com/api/?name=Jane+Smith&background=random" class="w-10 h-10 rounded-full" alt="User">
-                        <div>
-                            <p class="text-sm font-bold text-slate-900">Jane Smith</p>
-                            <p class="text-xs text-slate-500">Project Manager</p>
+                    <span class="shrink-0 text-sm font-semibold tabular-nums text-zinc-900">92%</span>
+                </li>
+                <li class="flex items-center justify-between gap-3">
+                    <div class="flex min-w-0 items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=Jane+Smith&background=e4e4e7&color=18181b" alt="" class="h-10 w-10 rounded-full">
+                        <div class="min-w-0">
+                            <p class="truncate text-sm font-medium text-zinc-900">Jane Smith</p>
+                            <p class="truncate text-xs text-zinc-500">PM</p>
                         </div>
                     </div>
-                    <span class="text-sm font-semibold text-slate-900">88%</span>
-                </div>
-            </div>
-            
-            <button class="w-full mt-6 py-2.5 rounded-lg border border-slate-200 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">
-                View Full Team
+                    <span class="shrink-0 text-sm font-semibold tabular-nums text-zinc-900">88%</span>
+                </li>
+            </ul>
+            <button type="button" class="mt-6 w-full rounded-xl border border-zinc-200 py-2.5 text-sm font-medium text-zinc-700 transition hover:bg-zinc-50">
+                Full team
             </button>
         </div>
-
     </div>
 @endsection
