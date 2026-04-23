@@ -9,26 +9,30 @@
 
         <span class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-primary/70 font-bold mb-6">
             <span class="w-2 h-2 rounded-full bg-primary/50 animate-pulse"></span>
-            {{ site_t('services_bento.kicker') }}
+            <?php echo e(site_t('services_bento.kicker')); ?>
+
         </span>
 
         <h1
             class="font-headline text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter text-white mb-6 leading-[0.95]">
-            {{ site_t('services_bento.title_line1') }} <br />
-            <span class="text-gradient">{{ site_t('services_bento.title_gradient') }}</span>
+            <?php echo e(site_t('services_bento.title_line1')); ?> <br />
+            <span class="text-gradient"><?php echo e(site_t('services_bento.title_gradient')); ?></span>
         </h1>
         <p class="text-on-surface-variant text-base md:text-lg max-w-xl font-light leading-relaxed mb-8">
-            {{ site_t('services_bento.body') }}
+            <?php echo e(site_t('services_bento.body')); ?>
+
         </p>
         <div class="flex gap-4 flex-wrap">
             <button type="button"
                 class="cta-btn px-8 py-3 hero-gradient text-white rounded-xl font-bold text-sm tracking-tight inline-flex items-center gap-2">
-                {{ site_t('services_bento.cta_primary') }}
+                <?php echo e(site_t('services_bento.cta_primary')); ?>
+
                 <span class="material-symbols-outlined text-lg">arrow_forward</span>
             </button>
             <button type="button"
                 class="px-8 py-3 bg-white/5 hover:bg-white/10 text-white rounded-xl font-semibold text-sm tracking-tight transition-all duration-300 border border-white/10 hover:border-white/20 inline-flex items-center gap-2">
-                {{ site_t('services_bento.cta_secondary') }}
+                <?php echo e(site_t('services_bento.cta_secondary')); ?>
+
                 <span class="material-symbols-outlined text-lg">north_east</span>
             </button>
         </div>
@@ -41,14 +45,14 @@
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0dFsuGHbcIntBVusMCXgkQ8484gwsSMhMSvcXXkAAdxTpO2uqrBAEiH9Vzx7-2C9IC6cFi6sg0WcZgOIm2k3J6scmzLgISV4lYR3KEd3-vXcdixAr5M3rnpSwci0G0O7hsTo1q1FPFwlabNFVqtsi9lpKTDmnsvJZItRiMWWGqdPajMyDI9igXCBYGc6UNEPwCqEGp4OB_H8WRLDrM_CwK0NFzl6JHkazH1J7ssmq0Uajs2HibvdTLcxMxp6n_2mSWZyDeqbj38I" />
         <div class="absolute inset-0 bg-gradient-to-t from-[#050510] via-transparent to-transparent"></div>
         <div class="absolute bottom-8 left-8 right-8">
-            <span class="text-xs uppercase tracking-[0.3em] text-primary/70 font-bold mb-3 block">{{ site_t('services_bento.system_kicker') }}</span>
+            <span class="text-xs uppercase tracking-[0.3em] text-primary/70 font-bold mb-3 block"><?php echo e(site_t('services_bento.system_kicker')); ?></span>
             <div class="flex items-center gap-3">
                 <div class="w-2.5 h-2.5 bg-green-500 rounded-full pulse-dot"></div>
-                <span class="font-headline font-bold text-xl text-white">{{ site_t('services_bento.system_status') }}</span>
+                <span class="font-headline font-bold text-xl text-white"><?php echo e(site_t('services_bento.system_status')); ?></span>
             </div>
             <div class="mt-3 flex items-center gap-2 text-xs text-slate-500">
                 <span class="material-symbols-outlined text-sm">schedule</span>
-                <span id="uptimeCounter">{{ site_t('services_bento.uptime') }}</span>
+                <span id="uptimeCounter"><?php echo e(site_t('services_bento.uptime')); ?></span>
             </div>
         </div>
     </div>
@@ -60,11 +64,13 @@
             <span class="material-symbols-outlined text-blue-400">web</span>
         </div>
         <h3 class="font-headline text-xl font-bold text-white mb-3 flex items-center gap-2">
-            {{ site_t('services_bento.card_web_title') }}
+            <?php echo e(site_t('services_bento.card_web_title')); ?>
+
             <span class="material-symbols-outlined text-primary/40 text-lg arrow-reveal">arrow_outward</span>
         </h3>
         <p class="text-on-surface-variant text-sm leading-relaxed">
-            {{ site_t('services_bento.card_web_body') }}
+            <?php echo e(site_t('services_bento.card_web_body')); ?>
+
         </p>
     </div>
 
@@ -75,11 +81,13 @@
             <span class="material-symbols-outlined text-violet-400">smartphone</span>
         </div>
         <h3 class="font-headline text-xl font-bold text-white mb-3 flex items-center gap-2">
-            {{ site_t('services_bento.card_app_title') }}
+            <?php echo e(site_t('services_bento.card_app_title')); ?>
+
             <span class="material-symbols-outlined text-primary/40 text-lg arrow-reveal">arrow_outward</span>
         </h3>
         <p class="text-on-surface-variant text-sm leading-relaxed">
-            {{ site_t('services_bento.card_app_body') }}
+            <?php echo e(site_t('services_bento.card_app_body')); ?>
+
         </p>
     </div>
 
@@ -91,11 +99,14 @@
                 style="font-variation-settings: 'FILL' 1">psychology</span>
         </div>
         <h3 class="font-headline text-xl font-bold text-white mb-3 flex items-center gap-2">
-            {{ site_t('services_bento.card_ai_title') }}
+            <?php echo e(site_t('services_bento.card_ai_title')); ?>
+
             <span class="material-symbols-outlined text-primary/40 text-lg arrow-reveal">arrow_outward</span>
         </h3>
         <p class="text-on-surface-variant text-sm leading-relaxed">
-            {{ site_t('services_bento.card_ai_body') }}
+            <?php echo e(site_t('services_bento.card_ai_body')); ?>
+
         </p>
     </div>
 </div>
+<?php /**PATH C:\Users\Mohamed Ayman\Herd\Coding solutions\codiing-solutions\resources\views/web/home/sections/services-bento.blade.php ENDPATH**/ ?>

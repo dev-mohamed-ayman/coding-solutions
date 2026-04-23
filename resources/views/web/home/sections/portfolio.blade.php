@@ -3,9 +3,9 @@
     <div
         class="lg:col-span-3 glass-panel glass-panel-hover card-shine rounded-2xl p-10 flex flex-col justify-between reveal stagger-6">
         <div>
-            <span class="text-xs uppercase tracking-[0.3em] text-primary/60 font-bold mb-4 block">Technologies</span>
+            <span class="text-xs uppercase tracking-[0.3em] text-primary/60 font-bold mb-4 block">{{ site_t('portfolio.tech_kicker') }}</span>
             <h3 class="font-headline text-3xl font-bold text-white mb-8">
-                The Stack
+                {{ site_t('portfolio.stack_title') }}
             </h3>
             <div class="flex flex-wrap gap-3">
                 <span
@@ -39,11 +39,10 @@
         </div>
         <div class="mt-8">
             <h3 class="font-headline text-3xl font-bold text-white mb-3">
-                Cloud Services
+                {{ site_t('portfolio.cloud_title') }}
             </h3>
             <p class="text-on-surface-variant leading-relaxed">
-                Scalable architecture design and seamless infrastructure
-                deployment on AWS, GCP & Azure.
+                {{ site_t('portfolio.cloud_body') }}
             </p>
         </div>
     </div>

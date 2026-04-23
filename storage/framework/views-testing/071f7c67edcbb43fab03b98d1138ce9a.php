@@ -1,12 +1,14 @@
 <div class="mt-20 mb-10 flex flex-col items-center text-center reveal stagger-1">
     <span class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-primary/70 font-bold mb-4">
-        {{ site_t('technologies.kicker') }}
+        <?php echo e(site_t('technologies.kicker')); ?>
+
     </span>
     <h2 class="font-headline text-4xl md:text-5xl font-bold text-white mb-4" id="technologies-heading">
-        {{ site_t('technologies.title_main') }} <span class="text-gradient">{{ site_t('technologies.title_gradient') }}</span>
+        <?php echo e(site_t('technologies.title_main')); ?> <span class="text-gradient"><?php echo e(site_t('technologies.title_gradient')); ?></span>
     </h2>
     <p class="text-on-surface-variant max-w-2xl text-base leading-relaxed">
-        {{ site_t('technologies.intro') }}
+        <?php echo e(site_t('technologies.intro')); ?>
+
     </p>
 </div>
 
@@ -59,3 +61,4 @@
             class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Git</span>
     </div>
 </div>
+<?php /**PATH C:\Users\Mohamed Ayman\Herd\Coding solutions\codiing-solutions\resources\views/web/home/sections/technologies.blade.php ENDPATH**/ ?>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="dark" lang="en">
+<html class="dark" lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ $htmlDir ?? 'ltr' }}">
   @include('web.layouts.partials.head')
   <body class="font-body selection:bg-primary selection:text-on-primary">
     @include('web.layouts.partials.loader')

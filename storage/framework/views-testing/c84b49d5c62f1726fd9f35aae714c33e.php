@@ -162,3 +162,4 @@
     });
   }
 </script>
+<?php /**PATH C:\Users\Mohamed Ayman\Herd\Coding solutions\codiing-solutions\resources\views/web/layouts/partials/scripts.blade.php ENDPATH**/ ?>

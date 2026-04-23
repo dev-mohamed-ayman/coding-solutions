@@ -1,13 +1,15 @@
 <div class="mt-20 mb-10 flex flex-col items-center text-center reveal stagger-1">
     <span class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-primary/70 font-bold mb-4">
         <span class="w-2 h-2 rounded-full bg-primary/50 animate-pulse"></span>
-        {{ site_t('testimonials.kicker') }}
+        <?php echo e(site_t('testimonials.kicker')); ?>
+
     </span>
     <h2 class="font-headline text-4xl md:text-5xl font-bold text-white mb-4">
-        {{ site_t('testimonials.title_what') }} <span class="text-gradient">{{ site_t('testimonials.title_clients') }}</span>
+        <?php echo e(site_t('testimonials.title_what')); ?> <span class="text-gradient"><?php echo e(site_t('testimonials.title_clients')); ?></span>
     </h2>
     <p class="text-on-surface-variant max-w-2xl text-base leading-relaxed">
-        {{ site_t('testimonials.intro') }}
+        <?php echo e(site_t('testimonials.intro')); ?>
+
     </p>
 </div>
 
@@ -25,7 +27,7 @@
         </div>
 
         <p class="text-on-surface-variant text-sm sm:text-base leading-relaxed mb-8 relative z-10 italic">
-            "{{ site_t('testimonials.t1_quote') }}"
+            "<?php echo e(site_t('testimonials.t1_quote')); ?>"
         </p>
 
         <div class="flex items-center gap-4 relative z-10 pt-5 border-t border-white/[0.06]">
@@ -33,8 +35,8 @@
                 <span class="text-white font-bold text-sm tracking-wider">SM</span>
             </div>
             <div>
-                <h4 class="font-headline font-bold text-white text-sm sm:text-base">{{ site_t('testimonials.t1_name') }}</h4>
-                <p class="text-[10px] sm:text-xs text-primary/80 uppercase tracking-wider mt-0.5 font-bold">{{ site_t('testimonials.t1_role') }}</p>
+                <h4 class="font-headline font-bold text-white text-sm sm:text-base"><?php echo e(site_t('testimonials.t1_name')); ?></h4>
+                <p class="text-[10px] sm:text-xs text-primary/80 uppercase tracking-wider mt-0.5 font-bold"><?php echo e(site_t('testimonials.t1_role')); ?></p>
             </div>
         </div>
     </div>
@@ -52,7 +54,7 @@
         </div>
 
         <p class="text-on-surface-variant text-sm sm:text-base leading-relaxed mb-8 relative z-10 italic">
-            "{{ site_t('testimonials.t2_quote') }}"
+            "<?php echo e(site_t('testimonials.t2_quote')); ?>"
         </p>
 
         <div class="flex items-center gap-4 relative z-10 pt-5 border-t border-white/[0.06]">
@@ -60,8 +62,8 @@
                 <span class="text-white font-bold text-sm tracking-wider">DR</span>
             </div>
             <div>
-                <h4 class="font-headline font-bold text-white text-sm sm:text-base">{{ site_t('testimonials.t2_name') }}</h4>
-                <p class="text-[10px] sm:text-xs text-primary/80 uppercase tracking-wider mt-0.5 font-bold">{{ site_t('testimonials.t2_role') }}</p>
+                <h4 class="font-headline font-bold text-white text-sm sm:text-base"><?php echo e(site_t('testimonials.t2_name')); ?></h4>
+                <p class="text-[10px] sm:text-xs text-primary/80 uppercase tracking-wider mt-0.5 font-bold"><?php echo e(site_t('testimonials.t2_role')); ?></p>
             </div>
         </div>
     </div>
@@ -79,7 +81,7 @@
         </div>
 
         <p class="text-on-surface-variant text-sm sm:text-base leading-relaxed mb-8 relative z-10 italic">
-            "{{ site_t('testimonials.t3_quote') }}"
+            "<?php echo e(site_t('testimonials.t3_quote')); ?>"
         </p>
 
         <div class="flex items-center gap-4 relative z-10 pt-5 border-t border-white/[0.06]">
@@ -87,9 +89,10 @@
                 <span class="text-white font-bold text-sm tracking-wider">EL</span>
             </div>
             <div>
-                <h4 class="font-headline font-bold text-white text-sm sm:text-base">{{ site_t('testimonials.t3_name') }}</h4>
-                <p class="text-[10px] sm:text-xs text-primary/80 uppercase tracking-wider mt-0.5 font-bold">{{ site_t('testimonials.t3_role') }}</p>
+                <h4 class="font-headline font-bold text-white text-sm sm:text-base"><?php echo e(site_t('testimonials.t3_name')); ?></h4>
+                <p class="text-[10px] sm:text-xs text-primary/80 uppercase tracking-wider mt-0.5 font-bold"><?php echo e(site_t('testimonials.t3_role')); ?></p>
             </div>
         </div>
     </div>
 </div>
+<?php /**PATH C:\Users\Mohamed Ayman\Herd\Coding solutions\codiing-solutions\resources\views/web/home/sections/testimonials.blade.php ENDPATH**/ ?>
