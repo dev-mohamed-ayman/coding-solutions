@@ -33,13 +33,21 @@
         <article
             class="glass-panel glass-panel-hover card-shine rounded-2xl overflow-hidden group reveal stagger-2 flex flex-col border border-white/3 min-h-0">
             <div class="relative aspect-5/3 max-h-44 sm:max-h-50 overflow-hidden shrink-0">
-                <img src="{{ $card['payload']['image_url'] ?? '' }}"
-                    alt="{{ $card['alt'] ?? $card['title'] }}"
+                @php
+                    $imageUrl = '';
+                    if (!empty($card['image_path'])) {
+                        $imageUrl = Storage::url($card['image_path']);
+                    } elseif (!empty($card['payload']['image_url'])) {
+                        $imageUrl = $card['payload']['image_url'];
+                    }
+                @endphp
+                <img src="{{ $imageUrl }}"
+                    alt="{{ $card['alt'] ?? $card['title'] ?? '' }}"
                     class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]">
                 <div class="absolute inset-0 bg-linear-to-t from-[#050510]/95 via-[#050510]/20 to-transparent"></div>
                 <div class="absolute bottom-3 left-3 right-3 z-10 flex items-end justify-between gap-2">
                     <span
-                        class="px-2.5 py-1 bg-primary/15 text-primary/95 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] border border-primary/20 backdrop-blur-md">{{ $card['tag'] }}</span>
+                        class="px-2.5 py-1 bg-primary/15 text-primary/95 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] border border-primary/20 backdrop-blur-md">{{ $card['tag'] ?? '' }}</span>
                     <span
                         class="material-symbols-outlined text-primary/70 text-lg arrow-reveal shrink-0">arrow_outward</span>
                 </div>

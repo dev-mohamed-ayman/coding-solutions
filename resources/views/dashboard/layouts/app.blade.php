@@ -51,22 +51,53 @@
                 <span class="rounded-full bg-indigo-100 px-2 py-0.5 text-[11px] font-semibold text-indigo-700">3</span>
             </a>
 
-            <p class="mb-2 mt-6 px-3 text-[11px] font-semibold uppercase tracking-wider text-zinc-400">Site</p>
+            <p class="mb-2 mt-6 px-3 text-[11px] font-semibold uppercase tracking-wider text-zinc-400">Site Settings</p>
 
-            <a href="{{ route('dashboard.languages.index') }}" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-zinc-900">
+            <a href="{{ route('dashboard.languages.index') }}" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium {{ request()->routeIs('dashboard.languages.*') ? 'bg-zinc-100 text-zinc-900' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900' }} transition-colors">
                 <svg class="h-5 w-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
                 Languages
             </a>
 
-            <a href="{{ route('dashboard.translations.index') }}" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-zinc-900">
-                <svg class="h-5 w-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-                Translations
-            </a>
+            <p class="mb-2 mt-6 px-3 text-[11px] font-semibold uppercase tracking-wider text-zinc-400">Website Content</p>
 
-            <a href="{{ route('dashboard.content.index') }}" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-zinc-900">
-                <svg class="h-5 w-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
-                Content Hub
-            </a>
+            <div class="space-y-1">
+                <a href="{{ route('dashboard.website.edit', 'hero') }}" class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium {{ request()->is('dashboard/website/hero') ? 'bg-zinc-100 text-zinc-900' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900' }} transition-colors">
+                    Hero Section
+                </a>
+                <a href="{{ route('dashboard.website.edit', 'services') }}" class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium {{ request()->is('dashboard/website/services') ? 'bg-zinc-100 text-zinc-900' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900' }} transition-colors">
+                    Services
+                </a>
+                <a href="{{ route('dashboard.website.edit', 'why-us') }}" class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium {{ request()->is('dashboard/website/why-us') ? 'bg-zinc-100 text-zinc-900' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900' }} transition-colors">
+                    Why Choose Us
+                </a>
+                <a href="{{ route('dashboard.website.edit', 'technologies') }}" class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium {{ request()->is('dashboard/website/technologies') ? 'bg-zinc-100 text-zinc-900' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900' }} transition-colors">
+                    Technologies
+                </a>
+                <a href="{{ route('dashboard.projects.index') }}" class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium {{ request()->routeIs('dashboard.projects.*') ? 'bg-zinc-100 text-zinc-900' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900' }} transition-colors">
+                    Projects
+                </a>
+                <a href="{{ route('dashboard.testimonials.index') }}" class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium {{ request()->routeIs('dashboard.testimonials.*') ? 'bg-zinc-100 text-zinc-900' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900' }} transition-colors">
+                    Testimonials
+                </a>
+                <a href="{{ route('dashboard.website.edit', 'stats') }}" class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium {{ request()->is('dashboard/website/stats') ? 'bg-zinc-100 text-zinc-900' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900' }} transition-colors">
+                    Stats
+                </a>
+                <a href="{{ route('dashboard.website.edit', 'contact') }}" class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium {{ request()->is('dashboard/website/contact') ? 'bg-zinc-100 text-zinc-900' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900' }} transition-colors">
+                    Contact CTA
+                </a>
+                <a href="{{ route('dashboard.website.edit', 'about') }}" class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium {{ request()->is('dashboard/website/about') ? 'bg-zinc-100 text-zinc-900' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900' }} transition-colors">
+                    About Page
+                </a>
+                <a href="{{ route('dashboard.website.edit', 'process') }}" class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium {{ request()->is('dashboard/website/process') ? 'bg-zinc-100 text-zinc-900' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900' }} transition-colors">
+                    Our Process
+                </a>
+                <a href="{{ route('dashboard.website.edit', 'header') }}" class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium {{ request()->is('dashboard/website/header') ? 'bg-zinc-100 text-zinc-900' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900' }} transition-colors">
+                    Header & Nav
+                </a>
+                <a href="{{ route('dashboard.website.edit', 'footer') }}" class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium {{ request()->is('dashboard/website/footer') ? 'bg-zinc-100 text-zinc-900' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900' }} transition-colors">
+                    Footer
+                </a>
+            </div>
 
             <p class="mb-2 mt-6 px-3 text-[11px] font-semibold uppercase tracking-wider text-zinc-400">Settings</p>
 

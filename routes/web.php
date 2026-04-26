@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Dashboard\ContentController;
 use App\Http\Controllers\Dashboard\LanguageController;
-use App\Http\Controllers\Dashboard\SiteTranslationController;
+use App\Http\Controllers\Dashboard\ProjectController;
+use App\Http\Controllers\Dashboard\TestimonialController;
+use App\Http\Controllers\Dashboard\WebsiteController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\LocaleSwitchController;
 use App\Http\Middleware\SetSiteLocale;
@@ -21,14 +22,13 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
 
     Route::resource('languages', LanguageController::class)->except(['show']);
 
-    Route::get('/translations', [SiteTranslationController::class, 'index'])->name('translations.index');
-    Route::post('/translations', [SiteTranslationController::class, 'update'])->name('translations.update');
-    Route::post('/translations/keys', [SiteTranslationController::class, 'storeKey'])->name('translations.store-key');
+    // New Website CMS Routes
+    Route::get('/website/{section}', [WebsiteController::class, 'edit'])->name('website.edit');
+    Route::post('/website/{section}', [WebsiteController::class, 'update'])->name('website.update');
 
-    Route::get('/content', [ContentController::class, 'index'])->name('content.index');
-    Route::get('/content/{page:slug}', [ContentController::class, 'edit'])->name('content.edit');
-    Route::put('/content/{page:slug}/sections/{section}', [ContentController::class, 'updateSection'])->name('content.sections.update');
-    Route::post('/content/{page:slug}/blocks', [ContentController::class, 'storeBlock'])->name('content.blocks.store');
-    Route::put('/content/{page:slug}/blocks/{block}', [ContentController::class, 'updateBlock'])->name('content.blocks.update');
-    Route::delete('/content/{page:slug}/blocks/{block}', [ContentController::class, 'destroyBlock'])->name('content.blocks.destroy');
+    // Projects CRUD
+    Route::resource('projects', ProjectController::class)->except(['show']);
+
+    // Testimonials CRUD
+    Route::resource('testimonials', TestimonialController::class)->except(['show']);
 });
