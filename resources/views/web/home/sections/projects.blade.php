@@ -70,7 +70,7 @@
 </div>
 
 <div class="mt-12 flex justify-center reveal stagger-5">
-    <a href="#"
+    <a href="{{ request()->routeIs('home') ? '#portfolio' : route('home').'#portfolio' }}"
         class="cta-btn px-8 py-3.5 hero-gradient text-white rounded-xl font-bold text-sm tracking-wide uppercase inline-flex items-center gap-2 shadow-lg shadow-primary/20">
         {{ site_t('projects.view_all') }}
         <span class="material-symbols-outlined text-xl">arrow_right_alt</span>

@@ -8,11 +8,11 @@
         </a>
         <nav class="hidden md:flex gap-6 lg:gap-8 items-center">
             <a class="nav-link active text-blue-400 font-semibold font-headline tracking-tight text-sm"
-                href="#services">{{ site_t('nav.services') }}</a>
+                href="{{ request()->routeIs('home') ? '#services' : route('home').'#services' }}">{{ site_t('nav.services') }}</a>
             <a class="nav-link text-slate-400 font-medium font-headline tracking-tight text-sm hover:text-blue-300"
-                href="#portfolio">{{ site_t('nav.portfolio') }}</a>
+                href="{{ request()->routeIs('home') ? '#portfolio' : route('home').'#portfolio' }}">{{ site_t('nav.portfolio') }}</a>
             <a class="nav-link text-slate-400 font-medium font-headline tracking-tight text-sm hover:text-blue-300"
-                href="#stats">{{ site_t('nav.about') }}</a>
+                href="{{ request()->routeIs('home') ? '#stats' : route('home').'#stats' }}">{{ site_t('nav.about') }}</a>
             <a class="nav-link text-slate-400 font-medium font-headline tracking-tight text-sm hover:text-blue-300"
                 href="{{ request()->routeIs('home') ? '#contact' : route('home').'#contact' }}">{{ site_t('nav.contact') }}</a>
             @if (isset($activeLanguages) && $activeLanguages->count() > 1)

@@ -21,16 +21,16 @@
             {{ site_t('services_bento.body') }}
         </p>
         <div class="flex gap-4 flex-wrap">
-            <button type="button"
+            <a href="{{ route('contact.index') }}"
                 class="cta-btn px-8 py-3 hero-gradient text-white rounded-xl font-bold text-sm tracking-tight inline-flex items-center gap-2">
                 {{ site_t('services_bento.cta_primary') }}
                 <span class="material-symbols-outlined text-lg">arrow_forward</span>
-            </button>
-            <button type="button"
+            </a>
+            <a href="{{ request()->routeIs('home') ? '#portfolio' : route('home').'#portfolio' }}"
                 class="px-8 py-3 bg-white/5 hover:bg-white/10 text-white rounded-xl font-semibold text-sm tracking-tight transition-all duration-300 border border-white/10 hover:border-white/20 inline-flex items-center gap-2">
                 {{ site_t('services_bento.cta_secondary') }}
                 <span class="material-symbols-outlined text-lg">north_east</span>
-            </button>
+            </a>
         </div>
     </div>
 
