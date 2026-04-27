@@ -36,28 +36,36 @@
             </div>
 
             <div class="rounded-2xl border border-zinc-200/80 bg-white/90 p-8 shadow-xl shadow-zinc-200/40 backdrop-blur-sm">
-                <form action="#" method="POST" class="space-y-5">
+                <form action="{{ route('dashboard.login') }}" method="POST" class="space-y-5">
+                    @csrf
+
+                    @if($errors->any())
+                        <div class="rounded-xl bg-red-50 border border-red-200 p-4 text-sm text-red-700">
+                            {{ $errors->first() }}
+                        </div>
+                    @endif
+
                     <div>
                         <label for="email" class="mb-1.5 block text-sm font-medium text-zinc-700">Email</label>
                         <input id="email" name="email" type="email" autocomplete="email" required
-                            class="block w-full rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-zinc-900 placeholder:text-zinc-400 transition-colors focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                            value="{{ old('email') }}"
+                            class="block w-full rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-zinc-900 placeholder:text-zinc-400 transition-colors focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 @error('email') border-red-500 @enderror"
                             placeholder="you@company.com">
                     </div>
 
                     <div>
                         <div class="mb-1.5 flex items-center justify-between">
                             <label for="password" class="text-sm font-medium text-zinc-700">Password</label>
-                            <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">Forgot?</a>
                         </div>
                         <input id="password" name="password" type="password" autocomplete="current-password" required
-                            class="block w-full rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-zinc-900 placeholder:text-zinc-400 transition-colors focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                            class="block w-full rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-zinc-900 placeholder:text-zinc-400 transition-colors focus:border-indigo-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 @error('password') border-red-500 @enderror"
                             placeholder="••••••••">
                     </div>
 
                     <div class="flex items-center gap-2">
-                        <input id="remember-me" name="remember-me" type="checkbox"
+                        <input id="remember" name="remember" type="checkbox" value="1"
                             class="h-4 w-4 rounded border-zinc-300 text-indigo-600 focus:ring-indigo-500/30">
-                        <label for="remember-me" class="text-sm text-zinc-600">Stay signed in</label>
+                        <label for="remember" class="text-sm text-zinc-600">Stay signed in</label>
                     </div>
 
                     <button type="submit"

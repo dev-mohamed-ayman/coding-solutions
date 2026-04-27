@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\LoginController;
 use App\Http\Controllers\Dashboard\LanguageController;
 use App\Http\Controllers\Dashboard\ProjectController;
 use App\Http\Controllers\Dashboard\TestimonialController;
@@ -24,21 +25,22 @@ Route::post('/contact', [ContactController::class, 'store'])
     ->name('contact.store');
 
 Route::prefix('dashboard')->name('dashboard.')->group(function () {
-    Route::get('/login', fn () => view('dashboard.auth.login'))->name('login');
-    Route::get('/', fn () => view('dashboard.index'))->name('index');
+    Route::middleware('auth')->group(function () {
+        Route::get('/', fn () => view('dashboard.index'))->name('index');
 
-    Route::resource('languages', LanguageController::class)->except(['show']);
+        Route::resource('languages', LanguageController::class)->except(['show']);
 
-    // New Website CMS Routes
-    Route::get('/website/{section}', [WebsiteController::class, 'edit'])->name('website.edit');
-    Route::post('/website/{section}', [WebsiteController::class, 'update'])->name('website.update');
+        Route::get('/website/{section}', [WebsiteController::class, 'edit'])->name('website.edit');
+        Route::post('/website/{section}', [WebsiteController::class, 'update'])->name('website.update');
 
-    // Projects CRUD
-    Route::resource('projects', ProjectController::class)->except(['show']);
+        Route::resource('projects', ProjectController::class)->except(['show']);
 
-    // Testimonials CRUD
-    Route::resource('testimonials', TestimonialController::class)->except(['show']);
+        Route::resource('testimonials', TestimonialController::class)->except(['show']);
 
-    // Contact Messages
-    Route::resource('contact-messages', \App\Http\Controllers\Dashboard\ContactMessageController::class)->only(['index', 'show', 'destroy']);
+        Route::resource('contact-messages', \App\Http\Controllers\Dashboard\ContactMessageController::class)->only(['index', 'show', 'destroy']);
+    });
+
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [LoginController::class, 'login']);
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
