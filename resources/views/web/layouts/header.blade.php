@@ -14,7 +14,7 @@
             <a class="nav-link text-slate-400 font-medium font-headline tracking-tight text-sm hover:text-blue-300"
                 href="#stats">{{ site_t('nav.about') }}</a>
             <a class="nav-link text-slate-400 font-medium font-headline tracking-tight text-sm hover:text-blue-300"
-                href="#contact">{{ site_t('nav.contact') }}</a>
+                href="{{ request()->routeIs('home') ? '#contact' : route('home').'#contact' }}">{{ site_t('nav.contact') }}</a>
             @if (isset($activeLanguages) && $activeLanguages->count() > 1)
                 @php
                     $currentLang = $activeLanguages->firstWhere('code', app()->getLocale()) ?? $activeLanguages->first();
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             @endif
-            <a href="#contact"
+            <a href="{{ request()->routeIs('home') ? '#contact' : route('home').'#contact' }}"
                 class="cta-btn ml-1 lg:ml-4 px-7 py-2.5 hero-gradient text-white rounded-full font-bold text-sm tracking-tight inline-block">
                 {{ site_t('nav.cta') }}
             </a>

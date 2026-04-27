@@ -6,7 +6,7 @@
             <a class="nav-link text-slate-400 hover:text-primary transition-colors" href="#services">{{ site_t('nav.services') }}</a>
             <a class="nav-link text-slate-400 hover:text-primary transition-colors" href="#portfolio">{{ site_t('nav.portfolio') }}</a>
             <a class="nav-link text-slate-400 hover:text-primary transition-colors" href="#stats">{{ site_t('nav.about') }}</a>
-            <a class="nav-link text-slate-400 hover:text-primary transition-colors" href="#contact">{{ site_t('nav.contact') }}</a>
+            <a class="nav-link text-slate-400 hover:text-primary transition-colors" href="{{ request()->routeIs('home') ? '#contact' : route('home').'#contact' }}">{{ site_t('nav.contact') }}</a>
         </nav>
     </div>
 </footer>

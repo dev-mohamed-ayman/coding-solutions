@@ -17,6 +17,9 @@ Route::get('/', [HomeController::class, 'index'])
 Route::get('/locale/{code}', [LocaleSwitchController::class, 'switch'])
     ->name('locale.switch');
 
+Route::get('/contact', [ContactController::class, 'index'])
+    ->name('contact.index');
+
 Route::post('/contact', [ContactController::class, 'store'])
     ->name('contact.store');
 
