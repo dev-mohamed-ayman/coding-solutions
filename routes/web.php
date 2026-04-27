@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\TestimonialController;
 use App\Http\Controllers\Dashboard\WebsiteController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\LocaleSwitchController;
+use App\Http\Controllers\Web\ContactController;
 use App\Http\Middleware\SetSiteLocale;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,9 @@ Route::get('/', [HomeController::class, 'index'])
 
 Route::get('/locale/{code}', [LocaleSwitchController::class, 'switch'])
     ->name('locale.switch');
+
+Route::post('/contact', [ContactController::class, 'store'])
+    ->name('contact.store');
 
 Route::prefix('dashboard')->name('dashboard.')->group(function () {
     Route::get('/login', fn () => view('dashboard.auth.login'))->name('login');
@@ -31,4 +35,7 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
 
     // Testimonials CRUD
     Route::resource('testimonials', TestimonialController::class)->except(['show']);
+
+    // Contact Messages
+    Route::resource('contact-messages', \App\Http\Controllers\Dashboard\ContactMessageController::class)->only(['index', 'show', 'destroy']);
 });

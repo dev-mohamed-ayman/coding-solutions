@@ -46,10 +46,10 @@
                     </div>
                 </div>
             @endif
-            <button
-                class="cta-btn ml-1 lg:ml-4 px-7 py-2.5 hero-gradient text-white rounded-full font-bold text-sm tracking-tight">
+            <a href="#contact"
+                class="cta-btn ml-1 lg:ml-4 px-7 py-2.5 hero-gradient text-white rounded-full font-bold text-sm tracking-tight inline-block">
                 {{ site_t('nav.cta') }}
-            </button>
+            </a>
         </nav>
         <!-- Mobile Menu Button -->
         <button class="md:hidden text-white shrink-0" id="mobileMenuBtn" type="button">
