@@ -95,7 +95,7 @@ class WebsiteController
             ]
         ],
         'contact' => [
-            'title' => 'Contact CTA',
+            'title' => 'Contact Page & Socials',
             'keys' => [
                 'contact.kicker' => 'Badge Text',
                 'contact.title_line' => 'Headline (Part 1)',
@@ -103,6 +103,14 @@ class WebsiteController
                 'contact.intro' => 'Description',
                 'contact.cta_primary' => 'Primary Button',
                 'contact.cta_email' => 'Email Button',
+                'contact.phone' => 'Phone Number',
+                'contact.email' => 'Email Address',
+                'contact.location' => 'Physical Address',
+                'contact.whatsapp' => 'WhatsApp Number/Link',
+                'contact.facebook' => 'Facebook Link',
+                'contact.linkedin' => 'LinkedIn Link',
+                'contact.instagram' => 'Instagram Link',
+                'contact.twitter' => 'Twitter Link',
             ]
         ],
         'header' => [

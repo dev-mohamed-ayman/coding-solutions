@@ -88,7 +88,7 @@
                     Stats
                 </a>
                 <a href="{{ route('dashboard.website.edit', 'contact') }}" class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium {{ request()->is('dashboard/website/contact') ? 'bg-zinc-100 text-zinc-900' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900' }} transition-colors">
-                    Contact CTA
+                    Contact & Socials
                 </a>
                 <a href="{{ route('dashboard.website.edit', 'about') }}" class="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium {{ request()->is('dashboard/website/about') ? 'bg-zinc-100 text-zinc-900' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900' }} transition-colors">
                     About Page

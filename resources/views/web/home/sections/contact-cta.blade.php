@@ -19,7 +19,7 @@
                     <span class="material-symbols-outlined">rocket_launch</span>
                     {{ site_t('contact.cta_primary') }}
                 </a>
-                <a href="mailto:info@codiing-solutions.com"
+                <a href="{{ site_t('contact.email') ? 'mailto:'.site_t('contact.email') : '#' }}"
                     class="px-10 py-4 bg-white/5 hover:bg-white/10 text-white rounded-2xl font-semibold text-base tracking-tight transition-all duration-300 border border-white/10 hover:border-white/20 inline-flex items-center gap-3">
                     <span class="material-symbols-outlined">mail</span>
                     {{ site_t('contact.cta_email') }}
