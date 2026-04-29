@@ -1,7 +1,6 @@
-<div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-5" id="services">
-
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 mt-10 md:mt-20">
     <div
-        class="md:col-span-4 lg:col-span-4 glass-panel glass-panel-hover card-shine rounded-2xl p-8 sm:p-10 md:p-14 flex flex-col justify-center relative overflow-hidden reveal stagger-1">
+        class="md:col-span-4 lg:col-span-4 glass-panel glass-panel-hover card-shine rounded-2xl p-8 sm:p-10 md:p-14 flex flex-col justify-center items-center text-center md:items-start md:text-left relative overflow-hidden reveal stagger-1">
         <div class="absolute -top-32 -right-32 w-80 h-80 bg-primary/8 rounded-full blur-[100px]"></div>
         <div
             class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/10 to-transparent">
@@ -26,7 +25,7 @@
                 {{ site_t('services_bento.cta_primary') }}
                 <span class="material-symbols-outlined text-lg">arrow_forward</span>
             </a>
-            <a href="{{ request()->routeIs('home') ? '#portfolio' : route('home').'#portfolio' }}"
+            <a href="{{ request()->routeIs('home') ? '#portfolio' : route('home') . '#portfolio' }}"
                 class="px-8 py-3 bg-white/5 hover:bg-white/10 text-white rounded-xl font-semibold text-sm tracking-tight transition-all duration-300 border border-white/10 hover:border-white/20 inline-flex items-center gap-2">
                 {{ site_t('services_bento.cta_secondary') }}
                 <span class="material-symbols-outlined text-lg">north_east</span>
@@ -41,10 +40,12 @@
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0dFsuGHbcIntBVusMCXgkQ8484gwsSMhMSvcXXkAAdxTpO2uqrBAEiH9Vzx7-2C9IC6cFi6sg0WcZgOIm2k3J6scmzLgISV4lYR3KEd3-vXcdixAr5M3rnpSwci0G0O7hsTo1q1FPFwlabNFVqtsi9lpKTDmnsvJZItRiMWWGqdPajMyDI9igXCBYGc6UNEPwCqEGp4OB_H8WRLDrM_CwK0NFzl6JHkazH1J7ssmq0Uajs2HibvdTLcxMxp6n_2mSWZyDeqbj38I" />
         <div class="absolute inset-0 bg-gradient-to-t from-[#050510] via-transparent to-transparent"></div>
         <div class="absolute bottom-8 left-8 right-8">
-            <span class="text-xs uppercase tracking-[0.3em] text-primary/70 font-bold mb-3 block">{{ site_t('services_bento.system_kicker') }}</span>
+            <span
+                class="text-xs uppercase tracking-[0.3em] text-primary/70 font-bold mb-3 block">{{ site_t('services_bento.system_kicker') }}</span>
             <div class="flex items-center gap-3">
                 <div class="w-2.5 h-2.5 bg-green-500 rounded-full pulse-dot"></div>
-                <span class="font-headline font-bold text-xl text-white">{{ site_t('services_bento.system_status') }}</span>
+                <span
+                    class="font-headline font-bold text-xl text-white">{{ site_t('services_bento.system_status') }}</span>
             </div>
             <div class="mt-3 flex items-center gap-2 text-xs text-slate-500">
                 <span class="material-symbols-outlined text-sm">schedule</span>

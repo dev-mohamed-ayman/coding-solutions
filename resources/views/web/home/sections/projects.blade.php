@@ -1,15 +1,12 @@
-<div class="mt-20 mb-10 flex flex-col items-center text-center reveal stagger-1">
+<div class="mt-16 md:mt-24 mb-10 md:mb-12 flex flex-col items-center text-center reveal">
     <span class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-primary/70 font-bold mb-4">
         <span class="w-2 h-2 rounded-full bg-primary/50 animate-pulse"></span>
         {{ site_t('projects.kicker') }}
     </span>
-    <h2 class="font-headline text-4xl md:text-5xl font-bold text-white mb-4">
-        @if (trim(site_t('projects.title_featured')) !== '')
-            {{ site_t('projects.title_featured') }}
-        @endif
+    <h2 class="font-headline text-3xl md:text-5xl font-bold text-white mb-6">
         <span class="text-gradient">{{ site_t('projects.title_projects') }}</span>
     </h2>
-    <p class="text-on-surface-variant max-w-2xl text-base leading-relaxed">
+    <p class="text-on-surface-variant max-w-2xl text-base md:text-lg leading-relaxed">
         {{ site_t('projects.intro') }}
     </p>
 </div>
@@ -52,7 +49,8 @@
                         class="material-symbols-outlined text-primary/70 text-lg arrow-reveal shrink-0">arrow_outward</span>
                 </div>
             </a>
-            <div class="p-5 flex flex-col flex-1 min-h-0 relative z-10">
+            <div
+                class="p-5 flex flex-col flex-1 min-h-0 relative z-10 items-center text-center md:items-start md:text-left">
                 <h3
                     class="font-headline text-lg font-bold text-white mb-1.5 group-hover:text-primary transition-colors duration-300">
                     <a
@@ -61,7 +59,7 @@
                 <p class="text-on-surface-variant text-xs sm:text-sm leading-relaxed line-clamp-2 mb-4 flex-1">
                     {{ $card['body'] }}
                 </p>
-                <div class="flex flex-wrap gap-1.5 pt-1 border-t border-white/6">
+                <div class="flex flex-wrap justify-center md:justify-start gap-1.5 pt-1 border-t border-white/6 w-full">
                     @foreach (($card['payload']['tech'] ?? []) as $tech)
                         <span
                             class="tech-tag px-2.5 py-1 bg-white/5 text-slate-400 rounded-full text-[10px] font-bold uppercase tracking-widest border border-white/5">{{ $tech }}</span>
