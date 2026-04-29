@@ -19,7 +19,7 @@
         <p class="text-on-surface-variant text-base md:text-lg max-w-xl font-light leading-relaxed mb-8">
             {{ site_t('services_bento.body') }}
         </p>
-        <div class="flex gap-4 flex-wrap">
+        <div class="flex gap-4 flex-wrap justify-center md:justify-start">
             <a href="{{ route('contact.index') }}"
                 class="cta-btn px-8 py-3 hero-gradient text-white rounded-xl font-bold text-sm tracking-tight inline-flex items-center gap-2">
                 {{ site_t('services_bento.cta_primary') }}
@@ -34,12 +34,13 @@
     </div>
 
     <div
-        class="md:col-span-2 lg:col-span-2 glass-panel rounded-2xl overflow-hidden relative min-h-[320px] reveal stagger-2 group">
+        class="md:col-span-2 flex justify-center lg:col-span-2 glass-panel rounded-2xl overflow-hidden relative min-h-[320px] reveal stagger-2 group">
         <img class="absolute inset-0 w-full h-full object-cover grayscale-[70%] group-hover:grayscale-0 transition-all duration-1000 opacity-50 group-hover:opacity-70 scale-105 group-hover:scale-100"
             alt="Close-up of clean computer code on a dark monitor with neon blue and purple ambient lighting"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0dFsuGHbcIntBVusMCXgkQ8484gwsSMhMSvcXXkAAdxTpO2uqrBAEiH9Vzx7-2C9IC6cFi6sg0WcZgOIm2k3J6scmzLgISV4lYR3KEd3-vXcdixAr5M3rnpSwci0G0O7hsTo1q1FPFwlabNFVqtsi9lpKTDmnsvJZItRiMWWGqdPajMyDI9igXCBYGc6UNEPwCqEGp4OB_H8WRLDrM_CwK0NFzl6JHkazH1J7ssmq0Uajs2HibvdTLcxMxp6n_2mSWZyDeqbj38I" />
         <div class="absolute inset-0 bg-gradient-to-t from-[#050510] via-transparent to-transparent"></div>
-        <div class="absolute bottom-8 left-8 right-8">
+        <div
+            class="absolute bottom-8 inset-inline-8 flex flex-col items-center text-center md:items-start md:text-left">
             <span
                 class="text-xs uppercase tracking-[0.3em] text-primary/70 font-bold mb-3 block">{{ site_t('services_bento.system_kicker') }}</span>
             <div class="flex items-center gap-3">
@@ -55,14 +56,14 @@
     </div>
 
     <div
-        class="md:col-span-2 lg:col-span-2 glass-panel glass-panel-hover card-shine rounded-2xl p-8 group border border-white/[0.03] reveal stagger-3">
+        class="md:col-span-2 lg:col-span-2 glass-panel glass-panel-hover card-shine rounded-2xl p-8 group border border-white/[0.03] reveal stagger-3 flex flex-col items-center text-center md:items-start md:text-left">
         <div
             class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 icon-glow border border-blue-500/10">
             <span class="material-symbols-outlined text-blue-400">web</span>
         </div>
         <h3 class="font-headline text-xl font-bold text-white mb-3 flex items-center gap-2">
             {{ site_t('services_bento.card_web_title') }}
-            <span class="material-symbols-outlined text-primary/40 text-lg arrow-reveal">arrow_outward</span>
+            {{-- <span class="material-symbols-outlined text-primary/40 text-lg arrow-reveal">arrow_outward</span> --}}
         </h3>
         <p class="text-on-surface-variant text-sm leading-relaxed">
             {{ site_t('services_bento.card_web_body') }}
@@ -70,14 +71,14 @@
     </div>
 
     <div
-        class="md:col-span-2 lg:col-span-2 glass-panel glass-panel-hover card-shine rounded-2xl p-8 group border border-white/[0.03] reveal stagger-4">
+        class="md:col-span-2 lg:col-span-2 glass-panel glass-panel-hover card-shine rounded-2xl p-8 group border border-white/[0.03] reveal stagger-4 flex flex-col items-center text-center md:items-start md:text-left">
         <div
             class="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center mb-6 icon-glow border border-violet-500/10">
             <span class="material-symbols-outlined text-violet-400">smartphone</span>
         </div>
         <h3 class="font-headline text-xl font-bold text-white mb-3 flex items-center gap-2">
             {{ site_t('services_bento.card_app_title') }}
-            <span class="material-symbols-outlined text-primary/40 text-lg arrow-reveal">arrow_outward</span>
+            {{-- <span class="material-symbols-outlined text-primary/40 text-lg arrow-reveal">arrow_outward</span> --}}
         </h3>
         <p class="text-on-surface-variant text-sm leading-relaxed">
             {{ site_t('services_bento.card_app_body') }}
@@ -85,7 +86,7 @@
     </div>
 
     <div
-        class="md:col-span-2 lg:col-span-2 glass-panel glass-panel-hover card-shine rounded-2xl p-8 group border border-white/[0.03] reveal stagger-5">
+        class="md:col-span-2 lg:col-span-2 glass-panel glass-panel-hover card-shine rounded-2xl p-8 group border border-white/[0.03] reveal stagger-5 flex flex-col items-center text-center md:items-start md:text-left">
         <div
             class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-6 icon-glow border border-emerald-500/10">
             <span class="material-symbols-outlined text-emerald-400"
@@ -93,7 +94,7 @@
         </div>
         <h3 class="font-headline text-xl font-bold text-white mb-3 flex items-center gap-2">
             {{ site_t('services_bento.card_ai_title') }}
-            <span class="material-symbols-outlined text-primary/40 text-lg arrow-reveal">arrow_outward</span>
+            {{-- <span class="material-symbols-outlined text-primary/40 text-lg arrow-reveal">arrow_outward</span> --}}
         </h3>
         <p class="text-on-surface-variant text-sm leading-relaxed">
             {{ site_t('services_bento.card_ai_body') }}
