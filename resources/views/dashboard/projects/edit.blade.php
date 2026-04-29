@@ -4,7 +4,8 @@
 
 @section('content')
     <div class="mb-6">
-        <a href="{{ route('dashboard.projects.index') }}" class="text-sm text-indigo-600 hover:text-indigo-500">← Back to Projects</a>
+        <a href="{{ route('dashboard.projects.index') }}" class="text-sm text-indigo-600 hover:text-indigo-500">← Back to
+            Projects</a>
         <h1 class="mt-1 text-2xl font-semibold tracking-tight text-zinc-900">Edit Project</h1>
     </div>
 
@@ -18,7 +19,8 @@
         </div>
     @endif
 
-    <form action="{{ route('dashboard.projects.update', $project) }}" method="post" enctype="multipart/form-data" class="space-y-6">
+    <form action="{{ route('dashboard.projects.update', $project) }}" method="post" enctype="multipart/form-data"
+        class="space-y-6">
         @csrf
         @method('PUT')
 
@@ -36,26 +38,33 @@
                             <div>
                                 <label class="mb-1 block text-sm font-medium text-zinc-700">Project Title</label>
                                 <input type="text" name="translations[{{ $lang->id }}][title]" required
-                                    value="{{ old('translations.'.$lang->id.'.title', $translations[$lang->id]['title'] ?? '') }}"
+                                    value="{{ old('translations.' . $lang->id . '.title', $translations[$lang->id]['title'] ?? '') }}"
                                     class="block w-full rounded-xl border border-zinc-200 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20">
                             </div>
                             <div>
                                 <label class="mb-1 block text-sm font-medium text-zinc-700">Description</label>
                                 <textarea name="translations[{{ $lang->id }}][body]" rows="3" required
+                                    class="block w-full rounded-xl border border-zinc-200 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20">{{ old('translations.' . $lang->id . '.body', $translations[$lang->id]['body'] ?? '') }}</textarea>
+                            </div>
+                            <div>
+                                <label class="mb-1 block text-sm font-medium text-zinc-700">Long Description / Content</label>
+                                <textarea name="translations[{{ $lang->id }}][content]" rows="6"
                                     class="block w-full rounded-xl border border-zinc-200 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
-                                    >{{ old('translations.'.$lang->id.'.body', $translations[$lang->id]['body'] ?? '') }}</textarea>
+                                    placeholder="Explain the project in detail...">{{ old('translations.' . $lang->id . '.content', $translations[$lang->id]['content'] ?? '') }}</textarea>
                             </div>
-                            <div>
-                                <label class="mb-1 block text-sm font-medium text-zinc-700">Image Alt Text</label>
-                                <input type="text" name="translations[{{ $lang->id }}][alt]"
-                                    value="{{ old('translations.'.$lang->id.'.alt', $translations[$lang->id]['alt'] ?? '') }}"
-                                    class="block w-full rounded-xl border border-zinc-200 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20">
-                            </div>
-                            <div>
-                                <label class="mb-1 block text-sm font-medium text-zinc-700">Tag (e.g. E-Commerce)</label>
-                                <input type="text" name="translations[{{ $lang->id }}][tag]"
-                                    value="{{ old('translations.'.$lang->id.'.tag', $translations[$lang->id]['tag'] ?? '') }}"
-                                    class="block w-full rounded-xl border border-zinc-200 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="mb-1 block text-sm font-medium text-zinc-700">Image Alt Text</label>
+                                    <input type="text" name="translations[{{ $lang->id }}][alt]"
+                                        value="{{ old('translations.' . $lang->id . '.alt', $translations[$lang->id]['alt'] ?? '') }}"
+                                        class="block w-full rounded-xl border border-zinc-200 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20">
+                                </div>
+                                <div>
+                                    <label class="mb-1 block text-sm font-medium text-zinc-700">Tag (e.g. E-Commerce)</label>
+                                    <input type="text" name="translations[{{ $lang->id }}][tag]"
+                                        value="{{ old('translations.' . $lang->id . '.tag', $translations[$lang->id]['tag'] ?? '') }}"
+                                        class="block w-full rounded-xl border border-zinc-200 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -72,11 +81,13 @@
                             <label class="mb-1 block text-sm font-medium text-zinc-700">Project Image</label>
                             @if ($project->image_path)
                                 <div class="mb-3">
-                                    <img src="{{ Storage::url($project->image_path) }}" alt="Current image" class="h-32 w-full object-cover rounded-xl border border-zinc-200">
+                                    <img src="{{ Storage::url($project->image_path) }}" alt="Current image"
+                                        class="h-32 w-full object-cover rounded-xl border border-zinc-200">
                                 </div>
                             @elseif(isset($project->payload['image_url']))
                                 <div class="mb-3">
-                                    <img src="{{ $project->payload['image_url'] }}" alt="Current image" class="h-32 w-full object-cover rounded-xl border border-zinc-200">
+                                    <img src="{{ $project->payload['image_url'] }}" alt="Current image"
+                                        class="h-32 w-full object-cover rounded-xl border border-zinc-200">
                                 </div>
                             @endif
                             <input type="file" name="image" accept="image/*"
@@ -84,26 +95,45 @@
                             <p class="mt-1 text-xs text-zinc-500">Leave empty to keep current image</p>
                         </div>
                         <div>
+                            <label class="mb-1 block text-sm font-medium text-zinc-700">URL Slug</label>
+                            <input type="text" name="slug" value="{{ old('slug', $project->slug) }}"
+                                placeholder="my-awesome-project"
+                                class="block w-full rounded-xl border border-zinc-200 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20">
+                            <p class="mt-1 text-xs text-zinc-500">Auto-generated if left empty</p>
+                        </div>
+                        <div>
+                            <label class="mb-1 block text-sm font-medium text-zinc-700">Demo URL</label>
+                            <input type="url" name="demo_url"
+                                value="{{ old('demo_url', $project->payload['demo_url'] ?? '') }}"
+                                placeholder="https://demo.example.com"
+                                class="block w-full rounded-xl border border-zinc-200 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20">
+                        </div>
+                        <div>
                             <label class="mb-1 block text-sm font-medium text-zinc-700">Technologies</label>
-                            <input type="text" name="tech" value="{{ old('tech', implode(', ', $project->payload['tech'] ?? [])) }}" placeholder="Laravel, Vue.js, Tailwind"
+                            <input type="text" name="tech"
+                                value="{{ old('tech', implode(', ', $project->payload['tech'] ?? [])) }}"
+                                placeholder="Laravel, Vue.js, Tailwind"
                                 class="block w-full rounded-xl border border-zinc-200 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20">
                             <p class="mt-1 text-xs text-zinc-500">Comma separated list</p>
                         </div>
                         <div>
                             <label class="mb-1 block text-sm font-medium text-zinc-700">Sort Order</label>
-                            <input type="number" name="sort_order" value="{{ old('sort_order', $project->sort_order) }}" min="0"
+                            <input type="number" name="sort_order" value="{{ old('sort_order', $project->sort_order) }}"
+                                min="0"
                                 class="block w-full rounded-xl border border-zinc-200 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20">
                         </div>
                         <div class="pt-2">
                             <label class="inline-flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" name="is_active" value="1" class="rounded border-zinc-300 text-indigo-600 focus:ring-indigo-500" {{ $project->is_active ? 'checked' : '' }}>
+                                <input type="checkbox" name="is_active" value="1"
+                                    class="rounded border-zinc-300 text-indigo-600 focus:ring-indigo-500" {{ $project->is_active ? 'checked' : '' }}>
                                 <span class="text-sm font-medium text-zinc-700">Active (Visible on website)</span>
                             </label>
                         </div>
                     </div>
                 </div>
 
-                <button type="submit" class="w-full rounded-xl bg-zinc-900 px-5 py-3 text-sm font-semibold text-white hover:bg-zinc-800 transition-colors shadow-sm">
+                <button type="submit"
+                    class="w-full rounded-xl bg-zinc-900 px-5 py-3 text-sm font-semibold text-white hover:bg-zinc-800 transition-colors shadow-sm">
                     Save Changes
                 </button>
             </div>

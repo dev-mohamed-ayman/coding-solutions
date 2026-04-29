@@ -6,7 +6,7 @@
     @include('web.layouts.partials.background')
     @include('web.layouts.header')
 
-    <main class="pt-28 pb-24 px-6 max-w-7xl mx-auto relative z-10">
+    <main class="pt-28 pb-24 px-8 max-w-7xl mx-auto relative z-10">
       @yield('content')
     </main>
 

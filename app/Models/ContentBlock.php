@@ -11,7 +11,9 @@ class ContentBlock extends Model
     protected $fillable = [
         'content_page_id',
         'zone',
+        'image_path',
         'type',
+        'slug',
         'payload',
         'is_active',
         'sort_order',

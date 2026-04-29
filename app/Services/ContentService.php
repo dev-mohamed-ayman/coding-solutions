@@ -119,7 +119,7 @@ class ContentService
         $fallback = Language::defaultLanguage();
 
         $translated = [];
-        foreach (['title', 'subtitle', 'body', 'cta_label', 'tag'] as $field) {
+        foreach (['title', 'subtitle', 'body', 'cta_label', 'tag', 'alt', 'content'] as $field) {
             $currentValue = null;
             if ($language) {
                 $currentValue = ContentTranslation::query()
@@ -142,6 +142,8 @@ class ContentService
 
         return [
             'id' => $block->id,
+            'slug' => $block->slug,
+            'image_path' => $block->image_path,
             'zone' => $block->zone,
             'type' => $block->type,
             'sort_order' => $block->sort_order,

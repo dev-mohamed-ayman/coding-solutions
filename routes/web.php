@@ -15,6 +15,14 @@ Route::get('/', [HomeController::class, 'index'])
     ->middleware(SetSiteLocale::class)
     ->name('home');
 
+Route::get('/projects', [\App\Http\Controllers\Web\ProjectController::class, 'index'])
+    ->middleware(SetSiteLocale::class)
+    ->name('projects.index');
+
+Route::get('/projects/{project:slug}', [\App\Http\Controllers\Web\ProjectController::class, 'show'])
+    ->middleware(SetSiteLocale::class)
+    ->name('projects.show');
+
 Route::get('/locale/{code}', [LocaleSwitchController::class, 'switch'])
     ->name('locale.switch');
 

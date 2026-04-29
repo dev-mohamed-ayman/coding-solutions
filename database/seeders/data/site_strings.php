@@ -85,6 +85,14 @@ return [
         'projects.p3_body' => 'Real-time data visualization and analytics dashboard for marketing teams and agencies.',
         'projects.p3_alt' => 'SaaS Dashboard',
         'projects.view_all' => 'View All Projects',
+        'projects.no_projects' => 'No projects found.',
+        'projects.details_title' => 'Project Info',
+        'projects.technologies' => 'Technologies',
+        'projects.visit_demo' => 'Visit Live Demo',
+        'projects.start_similar' => 'Start Similar Project',
+
+        'common.all' => 'All',
+        'common.back_to_projects' => 'Back to Projects',
 
         'testimonials.kicker' => 'Testimonials',
         'testimonials.title_what' => 'What Our',
@@ -191,6 +199,14 @@ return [
         'projects.p3_body' => 'لوحة تحليلات وتصور بيانات لحظية لفرق التسويق والوكالات.',
         'projects.p3_alt' => 'لوحة SaaS',
         'projects.view_all' => 'كل المشاريع',
+        'projects.no_projects' => 'لا توجد مشاريع حالياً.',
+        'projects.details_title' => 'معلومات المشروع',
+        'projects.technologies' => 'التقنيات المستخدمة',
+        'projects.visit_demo' => 'زيارة رابط المعاينة',
+        'projects.start_similar' => 'ابدأ مشروعاً مشابهاً',
+
+        'common.all' => 'الكل',
+        'common.back_to_projects' => 'العودة للمشاريع',
 
         'testimonials.kicker' => 'آراء العملاء',
         'testimonials.title_what' => 'ماذا يقول',

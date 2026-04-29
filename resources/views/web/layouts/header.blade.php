@@ -47,7 +47,7 @@
                 </div>
             @endif
             <a href="{{ request()->routeIs('home') ? '#contact' : route('home').'#contact' }}"
-                class="cta-btn ml-1 lg:ml-4 px-7 py-2.5 hero-gradient text-white rounded-full font-bold text-sm tracking-tight inline-block">
+                class="cta-btn ms-1 lg:ms-4 px-7 py-2.5 hero-gradient text-white rounded-full font-bold text-sm tracking-tight inline-block">
                 {{ site_t('nav.cta') }}
             </a>
         </nav>

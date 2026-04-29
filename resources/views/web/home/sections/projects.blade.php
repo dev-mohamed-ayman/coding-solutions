@@ -14,7 +14,7 @@
     </p>
 </div>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 mt-10" id="projects-grid">
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-10" id="projects-grid">
     @php
         $projectCards = cms_blocks('home', 'projects.cards');
     @endphp
@@ -32,7 +32,8 @@
     @foreach ($projectCards as $card)
         <article
             class="glass-panel glass-panel-hover card-shine rounded-2xl overflow-hidden group reveal stagger-2 flex flex-col border border-white/3 min-h-0">
-            <div class="relative aspect-5/3 max-h-44 sm:max-h-50 overflow-hidden shrink-0">
+            <a href="{{ !empty($card['slug']) ? route('projects.show', $card['slug']) : '#' }}"
+                class="relative aspect-video max-h-44 sm:max-h-50 overflow-hidden shrink-0">
                 @php
                     $imageUrl = '';
                     if (!empty($card['image_path'])) {
@@ -41,27 +42,29 @@
                         $imageUrl = $card['payload']['image_url'];
                     }
                 @endphp
-                <img src="{{ $imageUrl }}"
-                    alt="{{ $card['alt'] ?? $card['title'] ?? '' }}"
+                <img src="{{ $imageUrl }}" alt="{{ $card['alt'] ?? $card['title'] ?? '' }}"
                     class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]">
                 <div class="absolute inset-0 bg-linear-to-t from-[#050510]/95 via-[#050510]/20 to-transparent"></div>
-                <div class="absolute bottom-3 left-3 right-3 z-10 flex items-end justify-between gap-2">
+                <div class="absolute bottom-3 inset-inline-3 z-10 flex items-end justify-between gap-2">
                     <span
                         class="px-2.5 py-1 bg-primary/15 text-primary/95 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] border border-primary/20 backdrop-blur-md">{{ $card['tag'] ?? '' }}</span>
                     <span
                         class="material-symbols-outlined text-primary/70 text-lg arrow-reveal shrink-0">arrow_outward</span>
                 </div>
-            </div>
+            </a>
             <div class="p-5 flex flex-col flex-1 min-h-0 relative z-10">
-                <h3 class="font-headline text-lg font-bold text-white mb-1.5 group-hover:text-primary transition-colors duration-300">
-                    {{ $card['title'] }}
+                <h3
+                    class="font-headline text-lg font-bold text-white mb-1.5 group-hover:text-primary transition-colors duration-300">
+                    <a
+                        href="{{ !empty($card['slug']) ? route('projects.show', $card['slug']) : '#' }}">{{ $card['title'] }}</a>
                 </h3>
                 <p class="text-on-surface-variant text-xs sm:text-sm leading-relaxed line-clamp-2 mb-4 flex-1">
                     {{ $card['body'] }}
                 </p>
                 <div class="flex flex-wrap gap-1.5 pt-1 border-t border-white/6">
                     @foreach (($card['payload']['tech'] ?? []) as $tech)
-                        <span class="tech-tag px-2.5 py-1 bg-white/5 text-slate-400 rounded-full text-[10px] font-bold uppercase tracking-widest border border-white/5">{{ $tech }}</span>
+                        <span
+                            class="tech-tag px-2.5 py-1 bg-white/5 text-slate-400 rounded-full text-[10px] font-bold uppercase tracking-widest border border-white/5">{{ $tech }}</span>
                     @endforeach
                 </div>
             </div>
@@ -70,7 +73,7 @@
 </div>
 
 <div class="mt-12 flex justify-center reveal stagger-5">
-    <a href="{{ request()->routeIs('home') ? '#portfolio' : route('home').'#portfolio' }}"
+    <a href="{{ route('projects.index') }}"
         class="cta-btn px-8 py-3.5 hero-gradient text-white rounded-xl font-bold text-sm tracking-wide uppercase inline-flex items-center gap-2 shadow-lg shadow-primary/20">
         {{ site_t('projects.view_all') }}
         <span class="material-symbols-outlined text-xl">arrow_right_alt</span>

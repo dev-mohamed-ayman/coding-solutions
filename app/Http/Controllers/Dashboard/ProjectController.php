@@ -10,6 +10,7 @@ use App\Services\ContentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class ProjectController
@@ -49,6 +50,8 @@ class ProjectController
         $data = $request->validate([
             'image' => ['nullable', 'image', 'max:2048'],
             'tech' => ['nullable', 'string'],
+            'demo_url' => ['nullable', 'url'],
+            'slug' => ['nullable', 'string', 'unique:content_blocks,slug'],
             'is_active' => ['nullable', 'boolean'],
             'sort_order' => ['nullable', 'integer'],
             'translations' => ['required', 'array'],
@@ -59,15 +62,31 @@ class ProjectController
             $imagePath = $request->file('image')->store('projects', 'public');
         }
 
+        // Generate slug from title if not provided
+        $slug = $data['slug'] ?? null;
+        if (!$slug) {
+            $firstLang = array_key_first($data['translations']);
+            $title = $data['translations'][$firstLang]['title'] ?? 'project';
+            $slug = Str::slug($title);
+
+            // Ensure slug is unique
+            $count = 1;
+            while (ContentBlock::where('slug', $slug)->exists()) {
+                $slug = Str::slug($title) . '-' . $count++;
+            }
+        }
+
         $block = ContentBlock::create([
             'content_page_id' => $this->getHomePageId(),
             'zone' => 'projects.cards',
             'type' => 'project_card',
+            'slug' => $slug,
             'image_path' => $imagePath,
             'is_active' => $request->boolean('is_active', true),
             'sort_order' => $data['sort_order'] ?? 0,
             'payload' => [
                 'tech' => array_values(array_filter(array_map('trim', explode(',', (string) ($data['tech'] ?? ''))))),
+                'demo_url' => $data['demo_url'] ?? null,
             ],
         ]);
 
@@ -80,9 +99,9 @@ class ProjectController
     public function edit(ContentBlock $project): View
     {
         abort_unless($project->zone === 'projects.cards', 404);
-        
+
         $languages = Language::query()->where('is_active', true)->orderBy('sort_order')->get();
-        
+
         $translations = [];
         foreach ($languages as $lang) {
             $translations[$lang->id] = $project->translations()->where('language_id', $lang->id)->pluck('value', 'field')->all();
@@ -98,6 +117,8 @@ class ProjectController
         $data = $request->validate([
             'image' => ['nullable', 'image', 'max:2048'],
             'tech' => ['nullable', 'string'],
+            'demo_url' => ['nullable', 'url'],
+            'slug' => ['nullable', 'string', 'unique:content_blocks,slug,' . $project->id],
             'is_active' => ['nullable', 'boolean'],
             'sort_order' => ['nullable', 'integer'],
             'translations' => ['required', 'array'],
@@ -111,12 +132,28 @@ class ProjectController
             $imagePath = $request->file('image')->store('projects', 'public');
         }
 
+        // Handle slug
+        $slug = $data['slug'] ?? $project->slug;
+        if (!$slug) {
+            $firstLang = array_key_first($data['translations']);
+            $title = $data['translations'][$firstLang]['title'] ?? 'project';
+            $slug = Str::slug($title);
+
+            // Ensure slug is unique
+            $count = 1;
+            while (ContentBlock::where('slug', $slug)->where('id', '!=', $project->id)->exists()) {
+                $slug = Str::slug($title) . '-' . $count++;
+            }
+        }
+
         $project->update([
             'image_path' => $imagePath,
+            'slug' => $slug,
             'is_active' => $request->boolean('is_active', true),
             'sort_order' => $data['sort_order'] ?? $project->sort_order,
             'payload' => [
                 'tech' => array_values(array_filter(array_map('trim', explode(',', (string) ($data['tech'] ?? ''))))),
+                'demo_url' => $data['demo_url'] ?? null,
             ],
         ]);
 
@@ -133,7 +170,7 @@ class ProjectController
         if ($project->image_path) {
             Storage::disk('public')->delete($project->image_path);
         }
-        
+
         $project->delete();
         ContentService::forgetPage('home');
 
