@@ -1,7 +1,7 @@
 <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-5" id="services">
 
     <div
-        class="md:col-span-4 lg:col-span-4 glass-panel glass-panel-hover card-shine rounded-2xl p-10 md:p-14 flex flex-col justify-center relative overflow-hidden reveal stagger-1">
+        class="md:col-span-4 lg:col-span-4 glass-panel glass-panel-hover card-shine rounded-2xl p-8 sm:p-10 md:p-14 flex flex-col justify-center relative overflow-hidden reveal stagger-1">
         <div class="absolute -top-32 -right-32 w-80 h-80 bg-primary/8 rounded-full blur-[100px]"></div>
         <div
             class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/10 to-transparent">

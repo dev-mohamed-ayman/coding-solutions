@@ -3,59 +3,60 @@
         {{ site_t('technologies.kicker') }}
     </span>
     <h2 class="font-headline text-4xl md:text-5xl font-bold text-white mb-4" id="technologies-heading">
-        {{ site_t('technologies.title_main') }} <span class="text-gradient">{{ site_t('technologies.title_gradient') }}</span>
+        {{ site_t('technologies.title_main') }} <span
+            class="text-gradient">{{ site_t('technologies.title_gradient') }}</span>
     </h2>
     <p class="text-on-surface-variant max-w-2xl text-base leading-relaxed">
         {{ site_t('technologies.intro') }}
     </p>
 </div>
 
-<div class="glass-panel rounded-2xl p-8 md:p-10 border border-white/[0.03] reveal stagger-2" id="technologies"
+<div class="glass-panel rounded-2xl p-6 md:p-10 border border-white/[0.03] reveal stagger-2" id="technologies"
     role="region" aria-labelledby="technologies-heading">
     <div class="flex flex-wrap justify-center gap-3 md:gap-3.5">
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Laravel</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Laravel</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">PHP</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">PHP</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Livewire</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Livewire</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">TypeScript</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">TypeScript</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">JavaScript</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">JavaScript</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">React</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">React</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Next.js</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Next.js</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Vue.js</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Vue.js</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Tailwind
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Tailwind
             CSS</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Python</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Python</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Django</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Django</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Node.js</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Node.js</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">GraphQL</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">GraphQL</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">REST
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">REST
             APIs</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">MySQL</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">MySQL</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">PostgreSQL</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">PostgreSQL</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Redis</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Redis</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Docker</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Docker</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">AWS</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">AWS</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Kubernetes</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Kubernetes</span>
         <span
-            class="tech-tag px-5 py-2.5 bg-white/5 text-slate-300 rounded-full text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Git</span>
+            class="tech-tag px-4 py-2 md:px-5 md:py-2.5 bg-white/5 text-slate-300 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/5 cursor-default">Git</span>
     </div>
 </div>
