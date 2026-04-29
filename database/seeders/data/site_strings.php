@@ -7,6 +7,7 @@
  */
 return [
     'en' => [
+        'nav.home' => 'Home',
         'nav.services' => 'Services',
         'nav.portfolio' => 'Portfolio',
         'nav.about' => 'About',
@@ -121,6 +122,7 @@ return [
         'portfolio.cloud_body' => 'Scalable architecture design and seamless infrastructure deployment on AWS, GCP & Azure.',
     ],
     'ar' => [
+        'nav.home' => 'الرئيسية',
         'nav.services' => 'الخدمات',
         'nav.portfolio' => 'الأعمال',
         'nav.about' => 'من نحن',
