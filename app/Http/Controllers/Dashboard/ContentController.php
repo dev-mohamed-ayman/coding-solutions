@@ -38,11 +38,12 @@ class ContentController
 
         $sectionValues = [];
         if ($language) {
-            $sectionValues = ContentTranslation::query()
-                ->where('language_id', $language->id)
-                ->whereIn('content_section_id', $sections->pluck('id'))
-                ->pluck('value', 'field')
-                ->all();
+            foreach ($sections as $section) {
+                foreach ($section->schema['fields'] ?? [] as $fieldKey) {
+                    $st = SiteTranslation::where('key', $fieldKey)->first();
+                    $sectionValues[$fieldKey] = $st ? $st->getTranslation('value', $language->code) : '';
+                }
+            }
         }
 
         if ($search !== '') {
@@ -56,7 +57,6 @@ class ContentController
 
         $blocks = ContentBlock::query()
             ->where('content_page_id', $page->id)
-            ->with(['translations' => fn ($query) => $query->when($language, fn ($q) => $q->where('language_id', $language->id))])
             ->orderBy('zone')
             ->orderBy('sort_order')
             ->get()
@@ -89,15 +89,11 @@ class ContentController
                 continue;
             }
 
-            ContentTranslation::query()->updateOrCreate(
-                [
-                    'language_id' => $language->id,
-                    'content_section_id' => $section->id,
-                    'content_block_id' => null,
-                    'field' => (string) $field,
-                ],
-                ['value' => $value]
+            $st = SiteTranslation::updateOrCreate(
+                ['key' => (string) $field]
             );
+            $st->setTranslation('value', $language->code, $value);
+            $st->save();
 
             SiteTranslationService::forgetLocale($language->code);
         }
@@ -123,6 +119,7 @@ class ContentController
             'fields.*' => ['nullable', 'string'],
         ]);
 
+        $language = Language::query()->findOrFail((int) $data['language_id']);
         $block = ContentBlock::query()->create([
             'content_page_id' => $page->id,
             'zone' => $data['zone'],
@@ -136,16 +133,12 @@ class ContentController
             'is_active' => true,
         ]);
 
-        $language = Language::query()->findOrFail((int) $data['language_id']);
         foreach (($data['fields'] ?? []) as $field => $value) {
-            ContentTranslation::query()->create([
-                'language_id' => $language->id,
-                'content_section_id' => null,
-                'content_block_id' => $block->id,
-                'field' => (string) $field,
-                'value' => $value,
-            ]);
+            if (in_array($field, ['title', 'body', 'cta_label', 'subtitle', 'tag', 'alt'])) {
+                $block->setTranslation($field, $language->code, $value);
+            }
         }
+        $block->save();
 
         ContentService::forgetPage($page->slug);
 
@@ -184,16 +177,11 @@ class ContentController
 
         $language = Language::query()->findOrFail((int) $data['language_id']);
         foreach (($data['fields'] ?? []) as $field => $value) {
-            ContentTranslation::query()->updateOrCreate(
-                [
-                    'language_id' => $language->id,
-                    'content_section_id' => null,
-                    'content_block_id' => $block->id,
-                    'field' => (string) $field,
-                ],
-                ['value' => $value]
-            );
+            if (in_array($field, ['title', 'body', 'cta_label', 'subtitle', 'tag', 'alt'])) {
+                $block->setTranslation($field, $language->code, $value);
+            }
         }
+        $block->save();
 
         ContentService::forgetPage($page->slug);
 

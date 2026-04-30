@@ -36,43 +36,13 @@ class ContentService
         }
     }
 
-    public function get(string $key, ?string $default = null): string
+    public function get(string $key, ?string $default = null, ?string $locale = null): string
     {
-        if (! Schema::hasTable('content_translations')) {
-            return $default ?? $key;
-        }
+        $locale = $locale ?? app()->getLocale();
 
-        $locale = app()->getLocale();
-        $language = Language::query()->where('code', $locale)->first();
-        if (! $language) {
-            return $default ?? $key;
-        }
-
-        $value = ContentTranslation::query()
-            ->where('language_id', $language->id)
-            ->where('field', $key)
-            ->whereNotNull('content_section_id')
-            ->value('value');
-
-        if (is_string($value) && $value !== '') {
-            return $value;
-        }
-
-        $fallbackCode = Language::defaultCode();
-        if ($fallbackCode !== $locale) {
-            $fallbackLanguage = Language::query()->where('code', $fallbackCode)->first();
-            if ($fallbackLanguage) {
-                $fallbackValue = ContentTranslation::query()
-                    ->where('language_id', $fallbackLanguage->id)
-                    ->where('field', $key)
-                    ->whereNotNull('content_section_id')
-                    ->value('value');
-
-                if (is_string($fallbackValue) && $fallbackValue !== '') {
-                    return $fallbackValue;
-                }
-            }
-        }
+        // In the new system, site_t already handles site translations.
+        // If we want ContentService to handle section-specific keys, we can look them up here.
+        // However, the migration moved everything to SiteTranslation.
 
         return $default ?? $key;
     }
@@ -115,29 +85,10 @@ class ContentService
     private function hydrateBlock(ContentBlock $block, string $locale): array
     {
         $payload = $block->payload ?? [];
-        $language = Language::query()->where('code', $locale)->first();
-        $fallback = Language::defaultLanguage();
 
         $translated = [];
-        foreach (['title', 'subtitle', 'body', 'cta_label', 'tag', 'alt', 'content'] as $field) {
-            $currentValue = null;
-            if ($language) {
-                $currentValue = ContentTranslation::query()
-                    ->where('content_block_id', $block->id)
-                    ->where('language_id', $language->id)
-                    ->where('field', $field)
-                    ->value('value');
-            }
-
-            if (($currentValue === null || $currentValue === '') && $fallback) {
-                $currentValue = ContentTranslation::query()
-                    ->where('content_block_id', $block->id)
-                    ->where('language_id', $fallback->id)
-                    ->where('field', $field)
-                    ->value('value');
-            }
-
-            $translated[$field] = $currentValue ?? '';
+        foreach (['title', 'subtitle', 'body', 'cta_label', 'tag', 'alt'] as $field) {
+            $translated[$field] = $block->getTranslation($field, $locale, true) ?? '';
         }
 
         return [

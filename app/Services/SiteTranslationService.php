@@ -28,26 +28,11 @@ class SiteTranslationService
 
     public function get(string $key, ?string $default = null): string
     {
-        if (Schema::hasTable('content_translations')) {
-            $contentValue = app(ContentService::class)->get($key, null);
-            if ($contentValue !== $key) {
-                return $contentValue;
-            }
-        }
-
         $locale = app()->getLocale();
         $map = $this->mapForLocale($locale);
 
         if (array_key_exists($key, $map) && $map[$key] !== null && $map[$key] !== '') {
             return (string) $map[$key];
-        }
-
-        $fallbackCode = Language::defaultCode();
-        if ($fallbackCode !== $locale) {
-            $fallback = $this->mapForLocale($fallbackCode);
-            if (array_key_exists($key, $fallback) && $fallback[$key] !== null && $fallback[$key] !== '') {
-                return (string) $fallback[$key];
-            }
         }
 
         return $default ?? $key;
@@ -72,20 +57,13 @@ class SiteTranslationService
      */
     protected function mapForLocale(string $code): array
     {
-        if (! Schema::hasTable('languages')) {
-            return [];
-        }
-
         return Cache::rememberForever(self::cacheKey($code), function () use ($code) {
-            $language = Language::query()->where('code', $code)->first();
-            if (! $language) {
-                return [];
+            $translations = SiteTranslation::all();
+            $map = [];
+            foreach ($translations as $t) {
+                $map[$t->key] = $t->getTranslation('value', $code, true);
             }
-
-            return SiteTranslation::query()
-                ->where('language_id', $language->id)
-                ->pluck('value', 'key')
-                ->all();
+            return $map;
         });
     }
 }

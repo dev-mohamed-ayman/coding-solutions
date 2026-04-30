@@ -18,16 +18,16 @@ class SiteTranslationController
         $language = Language::query()->find($languageId) ?? $languages->first();
 
         $defaultLanguage = Language::defaultLanguage();
-        $defaultKeys = $defaultLanguage
-            ? SiteTranslation::query()->where('language_id', $defaultLanguage->id)->pluck('key')->all()
-            : [];
-
-        $currentMap = $language
-            ? SiteTranslation::query()->where('language_id', $language->id)->pluck('value', 'key')->all()
-            : [];
-
-        $keys = array_values(array_unique([...$defaultKeys, ...array_keys($currentMap)]));
+        $keys = SiteTranslation::query()->pluck('key')->all();
         sort($keys);
+
+        $currentMap = [];
+        if ($language) {
+            foreach ($keys as $key) {
+                $st = SiteTranslation::where('key', $key)->first();
+                $currentMap[$key] = $st ? $st->getTranslation('value', $language->code) : '';
+            }
+        }
 
         return view('dashboard.translations.index', [
             'languages' => $languages,
@@ -53,10 +53,9 @@ class SiteTranslationController
             if (! is_string($key) || $key === '') {
                 continue;
             }
-            SiteTranslation::query()->updateOrCreate(
-                ['language_id' => $language->id, 'key' => $key],
-                ['value' => $value]
-            );
+            $st = SiteTranslation::updateOrCreate(['key' => $key]);
+            $st->setTranslation('value', $language->code, $value);
+            $st->save();
         }
 
         SiteTranslationService::forgetLocale($language->code);
@@ -76,10 +75,9 @@ class SiteTranslationController
 
         $language = Language::query()->findOrFail($data['language_id']);
 
-        SiteTranslation::query()->updateOrCreate(
-            ['language_id' => $language->id, 'key' => $data['key']],
-            ['value' => $data['value'] ?? '']
-        );
+        $st = SiteTranslation::updateOrCreate(['key' => $data['key']]);
+        $st->setTranslation('value', $language->code, $data['value'] ?? '');
+        $st->save();
 
         SiteTranslationService::forgetLocale($language->code);
 

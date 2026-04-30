@@ -1,6 +1,6 @@
-<div class="grid grid-cols-1 md:grid-cols-12 gap-6 mt-10 md:mt-20">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 mt-10 items-stretch">
     <div
-        class="md:col-span-4 lg:col-span-4 glass-panel glass-panel-hover card-shine rounded-2xl p-8 sm:p-10 md:p-14 flex flex-col justify-center items-center text-center md:items-start md:text-left relative overflow-hidden reveal stagger-1">
+        class="md:col-span-8 lg:col-span-8 glass-panel glass-panel-hover card-shine rounded-3xl p-10 md:p-16 flex flex-col justify-center items-center text-center md:items-start md:text-left relative overflow-hidden reveal stagger-1 min-h-[450px]">
         <div class="absolute -top-32 -right-32 w-80 h-80 bg-primary/8 rounded-full blur-[100px]"></div>
         <div
             class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/10 to-transparent">
@@ -12,8 +12,8 @@
         </span>
 
         <h1
-            class="font-headline text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter text-white mb-6 leading-[0.95]">
-            {{ site_t('services_bento.title_line1') }} <br />
+            class="font-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white mb-6 leading-[0.95]">
+            {{ site_t('services_bento.title_line1') }}
             <span class="text-gradient">{{ site_t('services_bento.title_gradient') }}</span>
         </h1>
         <p class="text-on-surface-variant text-base md:text-lg max-w-xl font-light leading-relaxed mb-8">
@@ -34,7 +34,7 @@
     </div>
 
     <div
-        class="md:col-span-2 flex justify-center lg:col-span-2 glass-panel rounded-2xl overflow-hidden relative min-h-[320px] reveal stagger-2 group">
+        class="md:col-span-4 lg:col-span-4 flex justify-center glass-panel rounded-3xl overflow-hidden relative min-h-[320px] h-full reveal stagger-2 group">
         <img class="absolute inset-0 w-full h-full object-cover grayscale-[70%] group-hover:grayscale-0 transition-all duration-1000 opacity-50 group-hover:opacity-70 scale-105 group-hover:scale-100"
             alt="Close-up of clean computer code on a dark monitor with neon blue and purple ambient lighting"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0dFsuGHbcIntBVusMCXgkQ8484gwsSMhMSvcXXkAAdxTpO2uqrBAEiH9Vzx7-2C9IC6cFi6sg0WcZgOIm2k3J6scmzLgISV4lYR3KEd3-vXcdixAr5M3rnpSwci0G0O7hsTo1q1FPFwlabNFVqtsi9lpKTDmnsvJZItRiMWWGqdPajMyDI9igXCBYGc6UNEPwCqEGp4OB_H8WRLDrM_CwK0NFzl6JHkazH1J7ssmq0Uajs2HibvdTLcxMxp6n_2mSWZyDeqbj38I" />
@@ -55,49 +55,20 @@
         </div>
     </div>
 
-    <div
-        class="md:col-span-2 lg:col-span-2 glass-panel glass-panel-hover card-shine rounded-2xl p-8 group border border-white/[0.03] reveal stagger-3 flex flex-col items-center text-center md:items-start md:text-left">
+    @foreach (cms_blocks('home', 'services_bento.cards') as $idx => $card)
         <div
-            class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 icon-glow border border-blue-500/10">
-            <span class="material-symbols-outlined text-blue-400">web</span>
+            class="md:col-span-4 lg:col-span-4 glass-panel glass-panel-hover card-shine rounded-3xl p-8 group border border-white/[0.03] reveal stagger-{{ $idx + 3 }} flex flex-col items-center text-center md:items-start md:text-left h-full">
+            <div
+                class="w-12 h-12 rounded-xl bg-{{ $card['payload']['color'] ?? 'blue' }}-500/10 flex items-center justify-center mb-6 icon-glow border border-{{ $card['payload']['color'] ?? 'blue' }}-500/10">
+                <span class="material-symbols-outlined text-{{ $card['payload']['color'] ?? 'blue' }}-400"
+                    @if (($card['payload']['icon'] ?? '') === 'psychology') style="font-variation-settings: 'FILL' 1" @endif>{{ $card['payload']['icon'] ?? 'web' }}</span>
+            </div>
+            <h3 class="font-headline text-xl font-bold text-white mb-3 flex items-center gap-2">
+                {{ $card['title'] }}
+            </h3>
+            <p class="text-on-surface-variant text-sm leading-relaxed">
+                {{ $card['body'] }}
+            </p>
         </div>
-        <h3 class="font-headline text-xl font-bold text-white mb-3 flex items-center gap-2">
-            {{ site_t('services_bento.card_web_title') }}
-            {{-- <span class="material-symbols-outlined text-primary/40 text-lg arrow-reveal">arrow_outward</span> --}}
-        </h3>
-        <p class="text-on-surface-variant text-sm leading-relaxed">
-            {{ site_t('services_bento.card_web_body') }}
-        </p>
-    </div>
-
-    <div
-        class="md:col-span-2 lg:col-span-2 glass-panel glass-panel-hover card-shine rounded-2xl p-8 group border border-white/[0.03] reveal stagger-4 flex flex-col items-center text-center md:items-start md:text-left">
-        <div
-            class="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center mb-6 icon-glow border border-violet-500/10">
-            <span class="material-symbols-outlined text-violet-400">smartphone</span>
-        </div>
-        <h3 class="font-headline text-xl font-bold text-white mb-3 flex items-center gap-2">
-            {{ site_t('services_bento.card_app_title') }}
-            {{-- <span class="material-symbols-outlined text-primary/40 text-lg arrow-reveal">arrow_outward</span> --}}
-        </h3>
-        <p class="text-on-surface-variant text-sm leading-relaxed">
-            {{ site_t('services_bento.card_app_body') }}
-        </p>
-    </div>
-
-    <div
-        class="md:col-span-2 lg:col-span-2 glass-panel glass-panel-hover card-shine rounded-2xl p-8 group border border-white/[0.03] reveal stagger-5 flex flex-col items-center text-center md:items-start md:text-left">
-        <div
-            class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-6 icon-glow border border-emerald-500/10">
-            <span class="material-symbols-outlined text-emerald-400"
-                style="font-variation-settings: 'FILL' 1">psychology</span>
-        </div>
-        <h3 class="font-headline text-xl font-bold text-white mb-3 flex items-center gap-2">
-            {{ site_t('services_bento.card_ai_title') }}
-            {{-- <span class="material-symbols-outlined text-primary/40 text-lg arrow-reveal">arrow_outward</span> --}}
-        </h3>
-        <p class="text-on-surface-variant text-sm leading-relaxed">
-            {{ site_t('services_bento.card_ai_body') }}
-        </p>
-    </div>
+    @endforeach
 </div>

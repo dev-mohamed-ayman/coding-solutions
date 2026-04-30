@@ -103,9 +103,9 @@
                                     <input name="zone" value="{{ $block->zone }}" class="w-full rounded-lg border border-zinc-200 px-2 py-1.5 text-xs">
                                     <input name="type" value="{{ $block->type }}" class="w-full rounded-lg border border-zinc-200 px-2 py-1.5 text-xs">
                                     <input name="sort_order" type="number" value="{{ $block->sort_order }}" class="w-full rounded-lg border border-zinc-200 px-2 py-1.5 text-xs">
-                                    <input name="fields[title]" value="{{ $block->translations->firstWhere('field', 'title')?->value }}" class="w-full rounded-lg border border-zinc-200 px-2 py-1.5 text-xs" placeholder="Title">
-                                    <textarea name="fields[body]" rows="2" class="w-full rounded-lg border border-zinc-200 px-2 py-1.5 text-xs" placeholder="Body">{{ $block->translations->firstWhere('field', 'body')?->value }}</textarea>
-                                    <input name="fields[tag]" value="{{ $block->translations->firstWhere('field', 'tag')?->value }}" class="w-full rounded-lg border border-zinc-200 px-2 py-1.5 text-xs" placeholder="Tag">
+                                    <input name="fields[title]" value="{{ $block->getTranslation('title', $language?->code) }}" class="w-full rounded-lg border border-zinc-200 px-2 py-1.5 text-xs" placeholder="Title">
+                                    <textarea name="fields[body]" rows="2" class="w-full rounded-lg border border-zinc-200 px-2 py-1.5 text-xs" placeholder="Body">{{ $block->getTranslation('body', $language?->code) }}</textarea>
+                                    <input name="fields[tag]" value="{{ $block->getTranslation('tag', $language?->code) }}" class="w-full rounded-lg border border-zinc-200 px-2 py-1.5 text-xs" placeholder="Tag">
                                     <input name="payload[image_url]" value="{{ $block->payload['image_url'] ?? '' }}" class="w-full rounded-lg border border-zinc-200 px-2 py-1.5 text-xs" placeholder="Image URL">
                                     <input name="payload[tech]" value="{{ implode(', ', $block->payload['tech'] ?? []) }}" class="w-full rounded-lg border border-zinc-200 px-2 py-1.5 text-xs" placeholder="Tech list">
                                     <label class="inline-flex items-center gap-2 text-xs text-zinc-600">
