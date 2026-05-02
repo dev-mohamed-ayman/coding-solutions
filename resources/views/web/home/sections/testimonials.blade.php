@@ -36,8 +36,10 @@
         @foreach ($testimonialCards as $index => $testimonial)
             @php
                 $gradientClass = $gradients[$index % count($gradients)];
-                $name = $testimonial['name'] ?? 'Unknown';
+                $name = $testimonial['title'] ?? $testimonial['name'] ?? 'Unknown';
                 $initials = strtoupper(substr($name, 0, 2));
+                $quote = $testimonial['body'] ?? $testimonial['quote'] ?? '';
+                $role = $testimonial['subtitle'] ?? $testimonial['role'] ?? '';
 
                 $imageUrl = '';
                 if (!empty($testimonial['image_path'])) {
@@ -63,7 +65,7 @@
                 </div>
 
                 <p class="text-on-surface-variant text-sm sm:text-base leading-relaxed mb-8 relative z-10 italic">
-                    "{{ $testimonial['quote'] ?? '' }}"
+                    "{{ $quote }}"
                 </p>
 
                 <div
@@ -80,7 +82,7 @@
                     <div>
                         <h4 class="font-headline font-bold text-white text-sm sm:text-base">{{ $name }}</h4>
                         <p class="text-[10px] sm:text-xs text-primary/80 uppercase tracking-wider mt-0.5 font-bold">
-                            {{ $testimonial['role'] ?? '' }}</p>
+                            {{ $role }}</p>
                     </div>
                 </div>
             </div>

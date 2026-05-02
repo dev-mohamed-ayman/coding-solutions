@@ -64,30 +64,56 @@
     </div>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobileMenu" class="fixed inset-0 bg-[#020205] z-40 hidden flex-col transition-all duration-500 ease-in-out opacity-0 translate-x-full">
-        <div class="absolute inset-0 bg-grid opacity-10"></div>
-        <div class="flex flex-col h-full pt-32 px-8 pb-10 relative z-10">
-            <nav class="flex flex-col gap-6 mb-12">
-                <a class="mobile-nav-link text-3xl font-headline font-bold {{ request()->routeIs('home') ? 'text-primary' : 'text-white' }}"
-                    href="{{ route('home') }}">{{ site_t('nav.home') ?? 'Home' }}</a>
-                <a class="mobile-nav-link text-3xl font-headline font-bold text-white"
-                    href="{{ request()->routeIs('home') ? '#services' : route('home') . '#services' }}">{{ site_t('nav.services') }}</a>
-                <a class="mobile-nav-link text-3xl font-headline font-bold {{ request()->routeIs('projects.*') ? 'text-primary' : 'text-white' }}"
-                    href="{{ route('projects.index') }}">{{ site_t('nav.portfolio') }}</a>
-                <a class="mobile-nav-link text-3xl font-headline font-bold text-white"
-                    href="{{ request()->routeIs('home') ? '#stats' : route('home') . '#stats' }}">{{ site_t('nav.about') }}</a>
-                <a class="mobile-nav-link text-3xl font-headline font-bold {{ request()->routeIs('contact.index') ? 'text-primary' : 'text-white' }}"
-                    href="{{ route('contact.index') }}">{{ site_t('nav.contact') }}</a>
+    <div id="mobileMenu"
+        class="fixed inset-0 bg-slate-950/98 backdrop-blur-2xl z-40 hidden flex-col transition-all duration-500 ease-in-out opacity-0 translate-x-full">
+        <div class="absolute inset-0 bg-grid opacity-20"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-primary/5 pointer-events-none">
+        </div>
+
+        <div class="flex flex-col h-full pt-32 px-10 pb-12 relative z-10 overflow-y-auto">
+            <nav class="flex flex-col gap-8 mb-auto">
+                <a class="mobile-nav-link group flex items-center justify-between text-4xl font-headline font-bold {{ request()->routeIs('home') ? 'text-primary' : 'text-white' }}"
+                    href="{{ route('home') }}">
+                    <span>{{ site_t('nav.home') ?? 'Home' }}</span>
+                    <span
+                        class="material-symbols-outlined opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary">arrow_forward</span>
+                </a>
+                <a class="mobile-nav-link group flex items-center justify-between text-4xl font-headline font-bold text-white"
+                    href="{{ request()->routeIs('home') ? '#services' : route('home') . '#services' }}">
+                    <span>{{ site_t('nav.services') }}</span>
+                    <span
+                        class="material-symbols-outlined opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary">arrow_forward</span>
+                </a>
+                <a class="mobile-nav-link group flex items-center justify-between text-4xl font-headline font-bold {{ request()->routeIs('projects.*') ? 'text-primary' : 'text-white' }}"
+                    href="{{ route('projects.index') }}">
+                    <span>{{ site_t('nav.portfolio') }}</span>
+                    <span
+                        class="material-symbols-outlined opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary">arrow_forward</span>
+                </a>
+                <a class="mobile-nav-link group flex items-center justify-between text-4xl font-headline font-bold text-white"
+                    href="{{ request()->routeIs('home') ? '#stats' : route('home') . '#stats' }}">
+                    <span>{{ site_t('nav.about') }}</span>
+                    <span
+                        class="material-symbols-outlined opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary">arrow_forward</span>
+                </a>
+                <a class="mobile-nav-link group flex items-center justify-between text-4xl font-headline font-bold {{ request()->routeIs('contact.index') ? 'text-primary' : 'text-white' }}"
+                    href="{{ route('contact.index') }}">
+                    <span>{{ site_t('nav.contact') }}</span>
+                    <span
+                        class="material-symbols-outlined opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary">arrow_forward</span>
+                </a>
             </nav>
 
             @if (isset($activeLanguages) && $activeLanguages->count() > 1)
-                <div class="mt-auto border-t border-white/10 pt-8">
-                    <p class="text-xs uppercase tracking-[0.2em] text-slate-500 font-bold mb-4">
-                        {{ site_t('common.language') ?? 'Language' }}</p>
-                    <div class="grid grid-cols-2 gap-3">
+                <div class="mt-12 border-t border-white/10 pt-8">
+                    <p class="text-xs uppercase tracking-[0.2em] text-slate-500 font-bold mb-6 flex items-center gap-2">
+                        <span class="w-8 h-px bg-white/10"></span>
+                        {{ site_t('common.language') ?? 'Language' }}
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
                         @foreach ($activeLanguages as $lang)
                             <a href="{{ route('locale.switch', ['code' => $lang->code, 'redirect' => $localeRedirect]) }}"
-                                class="flex items-center justify-center px-4 py-3 rounded-xl border {{ $lang->code === app()->getLocale() ? 'bg-primary/10 border-primary/20 text-primary' : 'bg-white/5 border-white/10 text-white' }} font-bold text-sm transition-all">
+                                class="flex items-center justify-center px-4 py-4 rounded-2xl border {{ $lang->code === app()->getLocale() ? 'bg-primary/20 border-primary/30 text-primary shadow-lg shadow-primary/10' : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10' }} font-bold text-sm transition-all duration-300">
                                 {{ $lang->native_name }}
                             </a>
                         @endforeach
@@ -95,10 +121,11 @@
                 </div>
             @endif
 
-            <div class="mt-8">
+            <div class="mt-10">
                 <a href="{{ route('contact.index') }}"
-                    class="w-full flex items-center justify-center px-8 py-4 hero-gradient text-white rounded-2xl font-bold text-lg tracking-tight shadow-xl shadow-primary/20">
+                    class="w-full flex items-center justify-center px-8 py-5 hero-gradient text-white rounded-2xl font-bold text-xl tracking-tight shadow-2xl shadow-primary/30 active:scale-[0.98] transition-transform">
                     {{ site_t('nav.cta') }}
+                    <span class="material-symbols-outlined ms-2">arrow_forward</span>
                 </a>
             </div>
         </div>

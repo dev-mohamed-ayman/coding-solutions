@@ -58,7 +58,7 @@
                                 @endif
                             </td>
                             <td class="px-5 py-3.5 font-medium text-zinc-900">
-                                {{ $project->translations->firstWhere('field', 'title')?->value ?: 'No title' }}
+                                {{ $project->getTranslation('title', $language->code) ?: 'No title' }}
                             </td>
                             <td class="px-5 py-3.5">
                                 <div class="flex flex-wrap gap-1">

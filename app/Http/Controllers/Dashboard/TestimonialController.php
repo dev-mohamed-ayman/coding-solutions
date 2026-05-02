@@ -31,7 +31,6 @@ class TestimonialController
         $testimonials = ContentBlock::query()
             ->where('zone', 'testimonials.cards')
             ->where('content_page_id', $this->getHomePageId())
-            ->with(['translations' => fn ($q) => $q->where('language_id', $language->id ?? 0)])
             ->orderBy('sort_order')
             ->get();
 
@@ -77,12 +76,16 @@ class TestimonialController
     public function edit(ContentBlock $testimonial): View
     {
         abort_unless($testimonial->zone === 'testimonials.cards', 404);
-        
+
         $languages = Language::query()->where('is_active', true)->orderBy('sort_order')->get();
-        
+
         $translations = [];
         foreach ($languages as $lang) {
-            $translations[$lang->id] = $testimonial->translations()->where('language_id', $lang->id)->pluck('value', 'field')->all();
+            $translations[$lang->id] = [
+                'title' => $testimonial->getTranslation('title', $lang->code, false),
+                'body' => $testimonial->getTranslation('body', $lang->code, false),
+                'subtitle' => $testimonial->getTranslation('subtitle', $lang->code, false),
+            ];
         }
 
         return view('dashboard.testimonials.edit', compact('testimonial', 'languages', 'translations'));
@@ -126,7 +129,7 @@ class TestimonialController
         if ($testimonial->image_path) {
             Storage::disk('public')->delete($testimonial->image_path);
         }
-        
+
         $testimonial->delete();
         ContentService::forgetPage('home');
 
@@ -135,20 +138,18 @@ class TestimonialController
 
     private function syncTranslations(ContentBlock $block, array $translationsData): void
     {
+        $languages = Language::all();
         foreach ($translationsData as $langId => $fields) {
+            $language = $languages->firstWhere('id', $langId);
+            if (!$language) continue;
+
             foreach ($fields as $field => $value) {
                 if (is_null($value)) continue;
-
-                ContentTranslation::query()->updateOrCreate(
-                    [
-                        'language_id' => $langId,
-                        'content_block_id' => $block->id,
-                        'content_section_id' => null,
-                        'field' => $field,
-                    ],
-                    ['value' => $value]
-                );
+                if (in_array($field, ['title', 'body', 'cta_label', 'subtitle', 'tag', 'alt'])) {
+                    $block->setTranslation($field, $language->code, $value);
+                }
             }
         }
+        $block->save();
     }
 }

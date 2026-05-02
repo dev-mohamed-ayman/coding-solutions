@@ -32,7 +32,6 @@ class ProjectController
         $projects = ContentBlock::query()
             ->where('zone', 'projects.cards')
             ->where('content_page_id', $this->getHomePageId())
-            ->with(['translations' => fn ($q) => $q->where('language_id', $language->id ?? 0)])
             ->orderBy('sort_order')
             ->get();
 
@@ -104,7 +103,11 @@ class ProjectController
 
         $translations = [];
         foreach ($languages as $lang) {
-            $translations[$lang->id] = $project->translations()->where('language_id', $lang->id)->pluck('value', 'field')->all();
+            $translations[$lang->id] = [
+                'title' => $project->getTranslation('title', $lang->code, false),
+                'body' => $project->getTranslation('body', $lang->code, false),
+                'alt' => $project->getTranslation('alt', $lang->code, false),
+            ];
         }
 
         return view('dashboard.projects.edit', compact('project', 'languages', 'translations'));
@@ -179,20 +182,18 @@ class ProjectController
 
     private function syncTranslations(ContentBlock $block, array $translationsData): void
     {
+        $languages = Language::all();
         foreach ($translationsData as $langId => $fields) {
+            $language = $languages->firstWhere('id', $langId);
+            if (!$language) continue;
+
             foreach ($fields as $field => $value) {
                 if (is_null($value)) continue;
-
-                ContentTranslation::query()->updateOrCreate(
-                    [
-                        'language_id' => $langId,
-                        'content_block_id' => $block->id,
-                        'content_section_id' => null,
-                        'field' => $field,
-                    ],
-                    ['value' => $value]
-                );
+                if (in_array($field, ['title', 'body', 'cta_label', 'subtitle', 'tag', 'alt'])) {
+                    $block->setTranslation($field, $language->code, $value);
+                }
             }
         }
+        $block->save();
     }
 }

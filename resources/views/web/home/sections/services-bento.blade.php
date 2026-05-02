@@ -34,13 +34,13 @@
     </div>
 
     <div
-        class="md:col-span-4 lg:col-span-4 flex justify-center glass-panel rounded-3xl overflow-hidden relative min-h-[320px] h-full reveal stagger-2 group">
+        class="md:col-span-4 lg:col-span-4 flex glass-panel rounded-3xl overflow-hidden relative min-h-[320px] h-full reveal stagger-2 group">
         <img class="absolute inset-0 w-full h-full object-cover grayscale-[70%] group-hover:grayscale-0 transition-all duration-1000 opacity-50 group-hover:opacity-70 scale-105 group-hover:scale-100"
             alt="Close-up of clean computer code on a dark monitor with neon blue and purple ambient lighting"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0dFsuGHbcIntBVusMCXgkQ8484gwsSMhMSvcXXkAAdxTpO2uqrBAEiH9Vzx7-2C9IC6cFi6sg0WcZgOIm2k3J6scmzLgISV4lYR3KEd3-vXcdixAr5M3rnpSwci0G0O7hsTo1q1FPFwlabNFVqtsi9lpKTDmnsvJZItRiMWWGqdPajMyDI9igXCBYGc6UNEPwCqEGp4OB_H8WRLDrM_CwK0NFzl6JHkazH1J7ssmq0Uajs2HibvdTLcxMxp6n_2mSWZyDeqbj38I" />
         <div class="absolute inset-0 bg-gradient-to-t from-[#050510] via-transparent to-transparent"></div>
         <div
-            class="absolute bottom-8 inset-inline-8 flex flex-col items-center text-center md:items-start md:text-left">
+            class="absolute bottom-8 left-8 right-8 flex flex-col items-center text-center md:items-start md:text-start">
             <span
                 class="text-xs uppercase tracking-[0.3em] text-primary/70 font-bold mb-3 block">{{ site_t('services_bento.system_kicker') }}</span>
             <div class="flex items-center gap-3">

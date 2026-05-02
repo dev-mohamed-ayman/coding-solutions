@@ -42,19 +42,19 @@
                         @endif
                     </div>
                     <blockquote class="text-sm italic text-zinc-600 border-l-2 border-indigo-200 pl-3">
-                        "{{ $testimonial->translations->firstWhere('field', 'quote')?->value ?: 'No quote provided' }}"
+                        "{{ $testimonial->getTranslation('body', $language->code) ?: 'No quote provided' }}"
                     </blockquote>
                     <div class="flex items-center gap-3 pt-2">
                         @if ($testimonial->image_path)
                             <img src="{{ Storage::url($testimonial->image_path) }}" alt="Avatar" class="h-10 w-10 rounded-full object-cover ring-2 ring-white">
                         @else
                             <div class="h-10 w-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-500 font-bold text-sm">
-                                {{ substr($testimonial->translations->firstWhere('field', 'name')?->value ?: 'U', 0, 1) }}
+                                {{ substr($testimonial->getTranslation('title', $language->code) ?: 'U', 0, 1) }}
                             </div>
                         @endif
                         <div>
-                            <div class="text-sm font-bold text-zinc-900">{{ $testimonial->translations->firstWhere('field', 'name')?->value ?: 'Unknown Name' }}</div>
-                            <div class="text-xs text-zinc-500">{{ $testimonial->translations->firstWhere('field', 'role')?->value ?: 'Unknown Role' }}</div>
+                            <div class="text-sm font-bold text-zinc-900">{{ $testimonial->getTranslation('title', $language->code) ?: 'Unknown Name' }}</div>
+                            <div class="text-xs text-zinc-500">{{ $testimonial->getTranslation('subtitle', $language->code) ?: 'Unknown Role' }}</div>
                         </div>
                     </div>
                 </div>

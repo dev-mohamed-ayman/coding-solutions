@@ -173,29 +173,19 @@ class WebsiteController
         abort_unless(array_key_exists($section, $this->sections), 404);
 
         $sectionData = $this->sections[$section];
-        
+
         $languages = Language::query()->where('is_active', true)->orderBy('sort_order')->orderBy('name')->get();
         $languageId = (int) $request->query('language_id', $languages->first()?->id ?? 0);
         $language = Language::query()->find($languageId) ?? $languages->first();
 
         $currentMap = [];
         if ($language) {
-            // Priority 1: content_translations
-            $contentMap = ContentTranslation::query()
-                ->where('language_id', $language->id)
-                ->whereNotNull('content_section_id')
-                ->whereIn('field', array_keys($sectionData['keys']))
-                ->pluck('value', 'field')
-                ->all();
-                
-            // Priority 2: site_translations
-            $siteMap = SiteTranslation::query()
-                ->where('language_id', $language->id)
-                ->whereIn('key', array_keys($sectionData['keys']))
-                ->pluck('value', 'key')
-                ->all();
-                
-            $currentMap = array_merge($siteMap, $contentMap);
+            foreach (array_keys($sectionData['keys']) as $key) {
+                $st = SiteTranslation::where('key', $key)->first();
+                if ($st) {
+                    $currentMap[$key] = $st->getTranslation('value', $language->code);
+                }
+            }
         }
 
         return view('dashboard.website.edit', [
@@ -224,19 +214,11 @@ class WebsiteController
             if (! is_string($key) || $key === '') {
                 continue;
             }
-            
+
             // 1. Update SiteTranslations
-            SiteTranslation::query()->updateOrCreate(
-                ['language_id' => $language->id, 'key' => $key],
-                ['value' => $value]
-            );
-            
-            // 2. Also update ContentTranslations if they exist to prevent overriding
-            ContentTranslation::query()
-                ->where('language_id', $language->id)
-                ->whereNotNull('content_section_id')
-                ->where('field', $key)
-                ->update(['value' => $value]);
+            $st = SiteTranslation::updateOrCreate(['key' => $key]);
+            $st->setTranslation('value', $language->code, $value);
+            $st->save();
         }
 
         SiteTranslationService::forgetLocale($language->code);

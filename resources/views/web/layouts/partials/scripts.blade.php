@@ -70,7 +70,7 @@
   });
 
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
       if (href === '#') return;
       e.preventDefault();
@@ -171,11 +171,12 @@
   if (mobileMenuBtn && mobileMenu) {
     const toggleMenu = () => {
       const isHidden = mobileMenu.classList.contains('hidden');
-      
+
       if (isHidden) {
         // Open
         mobileMenu.classList.remove('hidden');
         body.classList.add('overflow-hidden');
+        header?.classList.add('menu-open');
         setTimeout(() => {
           mobileMenu.classList.remove('opacity-0', 'translate-x-full');
           mobileMenu.classList.add('opacity-100', 'translate-x-0');
@@ -187,6 +188,7 @@
         mobileMenu.classList.remove('opacity-100', 'translate-x-0');
         menuIcon.textContent = 'menu';
         body.classList.remove('overflow-hidden');
+        header?.classList.remove('menu-open');
         setTimeout(() => {
           mobileMenu.classList.add('hidden');
         }, 500);
